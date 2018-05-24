@@ -75,12 +75,4 @@ public class ParseHelper {
   public static final Function<TokenStream, TemplateParser> TEMPLATE_PARSER = TemplateParser::new;
 
   public static final Function<CharStream, TemplateLexer> TEMPLATE_LEXER = TemplateLexer::new;
-
-  public static void main(String[] args) {
-    String input = "select ${a}, ${b} from c where ${d} = ${e(f, g(h))} and i = j";
-    SegmentsEvalAware aware = compile(input);
-    for (Segment segment : aware.getSegments()) {
-      System.out.println(segment.getText());
-    }
-  }
 }
