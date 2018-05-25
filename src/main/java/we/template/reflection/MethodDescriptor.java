@@ -41,7 +41,7 @@ public class MethodDescriptor {
 
   @Override
   public int hashCode() {
-    return this.hashCode;
+    return Objects.hash(this.clazz, this.methodName, this.actualTypes);
   }
 
   @Override
