@@ -1,7 +1,7 @@
 package we.template.segment;
 
 import we.template.Function;
-import we.template.Reflection;
+import we.template.reflection.Reflection;
 import we.template.RuntimeManager;
 import we.template.antlr.TemplateBaseVisitor;
 import we.template.antlr.TemplateParser;

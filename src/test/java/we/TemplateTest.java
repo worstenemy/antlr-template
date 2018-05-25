@@ -8,6 +8,7 @@ import org.junit.runners.JUnit4;
 import we.template.ParseHelper;
 import we.template.RuntimeManager;
 import we.template.SegmentsEvalAware;
+import we.template.reflection.MethodHelper;
 
 @RunWith(JUnit4.class)
 public class TemplateTest {
@@ -22,21 +23,21 @@ public class TemplateTest {
   }
 
   public static class Foo {
-  	private final String a;
-  	private final Foo next;
+    private final String a;
+    private final Foo next;
 
-  	public Foo(String a, Foo next) {
-  		this.a = a;
-  		this.next = next;
+    public Foo(String a, Foo next) {
+      this.a = a;
+      this.next = next;
     }
 
-	  public String getA() {
-		  return a;
-	  }
+    public String getA() {
+      return a;
+    }
 
-	  public Foo getNext() {
-		  return next;
-	  }
+    public Foo getNext() {
+      return next;
+    }
   }
 
   @Before
@@ -83,13 +84,31 @@ public class TemplateTest {
 
   @Test
   public void test_object_access() {
-  	Foo foo1 = new Foo("hello world", null);
-  	Foo foo2 = new Foo("this is test", foo1);
-  	RuntimeManager.setArgs("foo", foo2);
+    Foo foo1 = new Foo("hello world", null);
+    Foo foo2 = new Foo("this is test", foo1);
+    RuntimeManager.setArgs("foo", foo2);
 
-  	String template = "${foo.next.a.length()}";
-  	SegmentsEvalAware aware = ParseHelper.compile(template);
+    String template = "${foo.next.a.length()}";
+    SegmentsEvalAware aware = ParseHelper.compile(template);
 
-  	Assert.assertEquals(aware.eval(), "11");
+    Assert.assertEquals(aware.eval(), "11");
+  }
+
+  @Test
+  public void test_object_equals() {
+    String template = "${a.equals(b)}";
+
+    SegmentsEvalAware aware = ParseHelper.compile(template);
+
+    Assert.assertEquals(aware.eval(), "false");
+  }
+
+  @Test
+  public void test_object_subString() {
+    String template = "${a.substring(0, 1)}";
+
+    SegmentsEvalAware aware = ParseHelper.compile(template);
+
+    Assert.assertEquals(aware.eval(), "h");
   }
 }
