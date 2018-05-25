@@ -36,6 +36,9 @@ public class Reflection {
 		return result;
 	}
 
+	/**
+	 * TODO auto-boxing
+	 */
 	public static Object invokeMethod(Object target, String methodName, Object... args) {
 		if (FORBIDDEN_METHOD.contains(methodName)) {
 			throw new RuntimeException("invoke forbidden method: " + methodName);
