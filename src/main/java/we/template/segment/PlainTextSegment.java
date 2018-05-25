@@ -1,4 +1,6 @@
-package we.template;
+package we.template.segment;
+
+import we.template.Segment;
 
 public class PlainTextSegment implements Segment {
   private final String plainText;

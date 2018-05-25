@@ -1,77 +1,54 @@
 grammar Template;
 
-template
-    : statement+ EOF
-    ;
+template: statement+ EOF;
 
-statement
-    : braced  #sBraced
-    | text    #sText
-    ;
+statement: braced  #sBraced
+         | text    #sText;
 
-text
-    : symbol  #tSymbol
-    | plain   #tPlain
-    ;
+text: symbol  #tSymbol
+    | plain   #tPlain;
 
-symbol
-    : '+'
-    | '-'
-    | '*'
-    | '/'
-    | '%'
-    | '>'
-    | '<'
-    | '='
-    | '\''
-    | '!'
-    | '~'
-    ;
+symbol: '+'
+      | '-'
+      | '*'
+      | '/'
+      | '%'
+      | '>'
+      | '<'
+      | '='
+      | '\''
+      | '!'
+      | '~';
 
-plain
-    : ~('${' | '}')
-    ;
+plain: ~('${' | '}');
 
-braced
-    : '${' tinyStmt '}'
-    ;
+braced: '${' tinyStmt '}';
 
-tinyStmt
-    : tinyCall       #sCall
-    | IDENTIFIER     #sId
-    ;
+tinyStmt: IDENTIFIER     #sId
+        | tinyObject     #sObject
+        | tinyCall       #sCall;
 
-tinyCall
-    : IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')'
-    ;
+tinyObject: tinyObject '.' IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')'   #oArgCall
+          | tinyObject '.' IDENTIFIER '(' ')'                            #oNonArgCall
+          | tinyObject '.' IDENTIFIER                                    #oAccess
+          | IDENTIFIER                                                   #oSymbol;
 
-tinyExpr
-    : tinyCall            #eCall
-    | IDENTIFIER          #eId
-    | INTEGER_VALUE       #eInt
-    | QUOTED_IDENTIFIER   #eStr
-    ;
+tinyCall: IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')';
 
-INTEGER_VALUE
-    : DIGIT+
-    ;
+tinyExpr: IDENTIFIER          #eId
+        | INTEGER_VALUE       #eInt
+        | QUOTED_IDENTIFIER   #eStr
+        | tinyObject          #eObject
+        | tinyCall            #eCall;
 
-IDENTIFIER
-    : (LETTER | '_') (LETTER | DIGIT | '_' | '@' | ':')*
-    ;
+INTEGER_VALUE: DIGIT+;
 
-QUOTED_IDENTIFIER
-    : '"' ( ~'"' | '""' )* '"'
-    ;
+IDENTIFIER: (LETTER | '_') (LETTER | DIGIT | '_' | '@' | ':')*;
 
-fragment DIGIT
-    : [0-9]
-    ;
+QUOTED_IDENTIFIER: '"' ( ~'"' | '""' )* '"';
 
-fragment LETTER
-    : [a-zA-Z]
-    ;
+fragment DIGIT: [0-9];
 
-WS
-    : [ \r\n\t]+ -> channel(HIDDEN)
-    ;
+fragment LETTER: [a-zA-Z];
+
+WS: [ \r\n\t]+ -> channel(HIDDEN);

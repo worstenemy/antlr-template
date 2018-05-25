@@ -1,7 +1,12 @@
-package we.template;
+package we.template.segment;
 
 import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import we.template.Function;
+import we.template.Pair;
+import we.template.ParseHelper;
+import we.template.RuntimeManager;
+import we.template.Segment;
 import we.template.antlr.TemplateBaseVisitor;
 import we.template.antlr.TemplateParser;
 

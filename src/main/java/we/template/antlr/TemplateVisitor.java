@@ -1,4 +1,4 @@
-// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
+// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.6
 package we.template.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -63,13 +63,6 @@ public interface TemplateVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBraced(TemplateParser.BracedContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSCall(TemplateParser.SCallContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code sId}
 	 * labeled alternative in {@link TemplateParser#tinyStmt}.
 	 * @param ctx the parse tree
@@ -77,18 +70,53 @@ public interface TemplateVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSId(TemplateParser.SIdContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code sObject}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSObject(TemplateParser.SObjectContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code sCall}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSCall(TemplateParser.SCallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code oAccess}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOAccess(TemplateParser.OAccessContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code oSymbol}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOSymbol(TemplateParser.OSymbolContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code oNonArgCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitONonArgCall(TemplateParser.ONonArgCallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code oArgCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOArgCall(TemplateParser.OArgCallContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link TemplateParser#tinyCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTinyCall(TemplateParser.TinyCallContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code eCall}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitECall(TemplateParser.ECallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code eId}
 	 * labeled alternative in {@link TemplateParser#tinyExpr}.
@@ -110,4 +138,18 @@ public interface TemplateVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEStr(TemplateParser.EStrContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code eObject}
+	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEObject(TemplateParser.EObjectContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code eCall}
+	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitECall(TemplateParser.ECallContext ctx);
 }

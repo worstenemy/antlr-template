@@ -4,6 +4,9 @@ import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.Token;
 import we.template.antlr.TemplateBaseListener;
 import we.template.antlr.TemplateParser;
+import we.template.segment.ArgEvalSegment;
+import we.template.segment.FunctionEvalSegment;
+import we.template.segment.PlainTextSegment;
 
 import java.util.ArrayList;
 import java.util.List;

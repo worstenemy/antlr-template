@@ -1,4 +1,7 @@
-package we.template;
+package we.template.segment;
+
+import we.template.RuntimeManager;
+import we.template.Segment;
 
 public class ArgEvalSegment implements Segment {
   private final String arg;

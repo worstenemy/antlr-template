@@ -1,4 +1,4 @@
-// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
+// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.6
 package we.template.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -96,18 +96,6 @@ public interface TemplateListener extends ParseTreeListener {
 	 */
 	void exitBraced(TemplateParser.BracedContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterSCall(TemplateParser.SCallContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitSCall(TemplateParser.SCallContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code sId}
 	 * labeled alternative in {@link TemplateParser#tinyStmt}.
 	 * @param ctx the parse tree
@@ -120,6 +108,78 @@ public interface TemplateListener extends ParseTreeListener {
 	 */
 	void exitSId(TemplateParser.SIdContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code sObject}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterSObject(TemplateParser.SObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sObject}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitSObject(TemplateParser.SObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code sCall}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterSCall(TemplateParser.SCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sCall}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitSCall(TemplateParser.SCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code oAccess}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void enterOAccess(TemplateParser.OAccessContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code oAccess}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void exitOAccess(TemplateParser.OAccessContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code oSymbol}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void enterOSymbol(TemplateParser.OSymbolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code oSymbol}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void exitOSymbol(TemplateParser.OSymbolContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code oNonArgCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void enterONonArgCall(TemplateParser.ONonArgCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code oNonArgCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void exitONonArgCall(TemplateParser.ONonArgCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code oArgCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void enterOArgCall(TemplateParser.OArgCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code oArgCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * @param ctx the parse tree
+	 */
+	void exitOArgCall(TemplateParser.OArgCallContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link TemplateParser#tinyCall}.
 	 * @param ctx the parse tree
 	 */
@@ -129,18 +189,6 @@ public interface TemplateListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTinyCall(TemplateParser.TinyCallContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code eCall}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterECall(TemplateParser.ECallContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code eCall}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitECall(TemplateParser.ECallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code eId}
 	 * labeled alternative in {@link TemplateParser#tinyExpr}.
@@ -177,4 +225,28 @@ public interface TemplateListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEStr(TemplateParser.EStrContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code eObject}
+	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterEObject(TemplateParser.EObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code eObject}
+	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitEObject(TemplateParser.EObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code eCall}
+	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterECall(TemplateParser.ECallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code eCall}
+	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitECall(TemplateParser.ECallContext ctx);
 }
