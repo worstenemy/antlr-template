@@ -12,8 +12,6 @@ public class MethodDescriptor {
 
   private final Class<?>[] actualTypes;
 
-  private final int hashCode;
-
   public MethodDescriptor(Class<?> clazz, String methodName, Class<?>... actualTypes) {
     Objects.requireNonNull(clazz, "class cannot be null");
     Objects.requireNonNull(methodName, "method name cannot be null");
@@ -24,7 +22,6 @@ public class MethodDescriptor {
     } else {
       this.actualTypes = actualTypes;
     }
-    this.hashCode = methodName.length();
   }
 
   public Class<?> getClazz() {
@@ -55,7 +52,6 @@ public class MethodDescriptor {
     MethodDescriptor that = (MethodDescriptor) obj;
     return this.clazz.equals(that.clazz) &&
       this.methodName.equals(that.methodName) &&
-      Arrays.equals(this.actualTypes, that.actualTypes) &&
-      this.hashCode == that.hashCode;
+      Arrays.equals(this.actualTypes, that.actualTypes);
   }
 }
