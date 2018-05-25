@@ -115,10 +115,8 @@ public class MethodHelper {
   }
 
   private static boolean isAssignmentCompatible(Class<?> expectType, Class<?> actualType) {
-    if (expectType.isAssignableFrom(actualType)) {
-      return true;
-    }
-    return expectType.isPrimitive() && PRIMITIVES_WRAPPER.get(expectType).equals(actualType);
+    return (expectType.isAssignableFrom(actualType)) ||
+      (expectType.isPrimitive() && PRIMITIVES_WRAPPER.get(expectType).equals(actualType));
   }
 
   private static Method getCachedMethod(MethodDescriptor descriptor) {
