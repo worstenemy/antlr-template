@@ -41,18 +41,16 @@ public class Reflection {
       throw new RuntimeException("invoke forbidden method: " + methodName);
     }
     Class<?> clazz = target.getClass();
-    Method method = getOrThrow(() -> {
-      Class<?>[] paramTypes;
-      if (null == args) {
-        paramTypes = null;
-      } else {
-        paramTypes = new Class[args.length];
-        for (int i = 0; i < args.length; ++i) {
-          paramTypes[i] = args[i].getClass();
-        }
+    Class<?>[] paramTypes;
+    if (null == args) {
+      paramTypes = null;
+    } else {
+      paramTypes = new Class[args.length];
+      for (int i = 0; i < args.length; ++i) {
+        paramTypes[i] = args[i].getClass();
       }
-      return MethodHelper.searchMethod(clazz, methodName, paramTypes);
-    });
+    }
+    Method method = getOrThrow(() -> MethodHelper.searchMethod(clazz, methodName, paramTypes));
 
     boolean accessible = method.isAccessible();
     method.setAccessible(true);
