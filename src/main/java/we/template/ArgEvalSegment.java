@@ -1,8 +1,6 @@
 package we.template;
 
 public class ArgEvalSegment implements Segment {
-  private static final RuntimeContext CONTEXT = RuntimeContextManager.getContext();
-
   private final String arg;
 
   public ArgEvalSegment(String arg) {
@@ -16,6 +14,6 @@ public class ArgEvalSegment implements Segment {
 
   @Override
   public Object eval() {
-    return CONTEXT.arg(this.arg);
+    return RuntimeManager.arg(this.arg);
   }
 }

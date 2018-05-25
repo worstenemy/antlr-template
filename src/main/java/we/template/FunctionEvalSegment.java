@@ -29,8 +29,6 @@ public class FunctionEvalSegment implements Segment {
   }
 
   private static class EvalVisitor extends TemplateBaseVisitor<Object> {
-    private static final RuntimeContext CONTEXT = RuntimeContextManager.getContext();
-
     @Override
     public Object visitTinyCall(TemplateParser.TinyCallContext ctx) {
       String symbol = ctx.IDENTIFIER().getText();
@@ -40,7 +38,7 @@ public class FunctionEvalSegment implements Segment {
         args[i] = visit(contexts.get(i));
       }
       Function function;
-      if (null != (function = CONTEXT.function(symbol))) {
+      if (null != (function = RuntimeManager.function(symbol))) {
         return function.call(args);
       }
       throw new RuntimeException("function not found");
@@ -54,7 +52,7 @@ public class FunctionEvalSegment implements Segment {
     @Override
     public Object visitEId(TemplateParser.EIdContext ctx) {
       String symbol = ctx.IDENTIFIER().getText();
-      return CONTEXT.arg(symbol);
+      return RuntimeManager.arg(symbol);
     }
 
     @Override

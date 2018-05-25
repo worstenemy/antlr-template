@@ -13,32 +13,26 @@ public class DefaultRuntimeContext extends RuntimeContext {
   private static final ConcurrentMap<String, Function> FUNCTIONS =
     new ConcurrentHashMap<>(16);
 
-  public static void setArgs(String symbol, Object value) {
+  public void setArgs(String symbol, Object value) {
     ARGS.get().putIfAbsent(symbol, value);
   }
 
-  public static void setFunctions(String symbol, Function function) {
+  public void setFunctions(String symbol, Function function) {
     FUNCTIONS.putIfAbsent(symbol, function);
   }
 
-  public static void setFunctions(Class<?> function) {
+  public void setFunctions(Class<?> functions) {
     Method[] methods;
-    if (null != function && 0 != (methods = function.getMethods()).length) {
-      Object instance = createInstance(function);
-      if (null != instance) {
-        setFunctions(methods, instance);
+    Object instance = createInstance(functions);
+    if (null != functions && null != instance && 0 != (methods = functions.getMethods()).length) {
+      for (Method method : methods) {
+        Function function = new JavaMethod(method, instance);
+        FUNCTIONS.putIfAbsent(method.getName(), function);
       }
     }
   }
 
-  private static void setFunctions(Method[] methods, Object instance) {
-    for (Method method : methods) {
-      Function function = new JavaMethod(method, instance);
-      FUNCTIONS.putIfAbsent(method.getName(), function);
-    }
-  }
-
-  private static Object createInstance(Class<?> clazz) {
+  private Object createInstance(Class<?> clazz) {
     try {
       return clazz.newInstance();
     } catch (Exception e) {

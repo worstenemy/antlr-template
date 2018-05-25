@@ -5,8 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import we.template.DefaultRuntimeContext;
 import we.template.ParseHelper;
+import we.template.RuntimeManager;
 import we.template.SegmentsEvalAware;
 
 @RunWith(JUnit4.class)
@@ -23,9 +23,9 @@ public class TemplateTest {
 
   @Before
   public void setUp() {
-    DefaultRuntimeContext.setArgs("a", "hello world");
-    DefaultRuntimeContext.setArgs("b", "this is test");
-    DefaultRuntimeContext.setFunctions(Function.class);
+    RuntimeManager.setArgs("a", "hello world");
+    RuntimeManager.setArgs("b", "this is test");
+    RuntimeManager.setFunctions(Function.class);
   }
 
   @Test

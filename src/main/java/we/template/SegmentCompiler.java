@@ -39,16 +39,10 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
     Token start = ctx.getStart();
     Token stop = ctx.getStop();
 
-    if (notFirst(start)) {
-      String plainText = append(this.lastAccess, start.getTokenIndex() - 1);
-      this.segments.add(new PlainTextSegment(plainText));
-    }
+    String plainText = append(this.lastAccess, start.getTokenIndex() - 1);
+    this.segments.add(new PlainTextSegment(plainText));
 
     this.lastAccess = stop.getTokenIndex() + 1;
-  }
-
-  private boolean notFirst(Token start) {
-    return start.getTokenIndex() > 0;
   }
 
   @Override
@@ -73,13 +67,16 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
 
   private String append(int start, int stop) {
     List<Token> tokens = this.tokenStream.get(start, stop);
-    if (1 == tokens.size()) {
-      return tokens.get(0).getText();
+    if (null != tokens) {
+	    if (1 == tokens.size()) {
+		    return tokens.get(0).getText();
+	    }
+	    StringBuilder builder = new StringBuilder();
+	    for (Token token : tokens) {
+		    builder.append(token.getText());
+	    }
+	    return builder.toString();
     }
-    StringBuilder builder = new StringBuilder();
-    for (Token token : tokens) {
-      builder.append(token.getText());
-    }
-    return builder.toString();
+    return "";
   }
 }
