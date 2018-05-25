@@ -19,6 +19,7 @@ public class Reflection {
 		forbidden.add("notifyAll");
 		forbidden.add("wait");
 		forbidden.add("finalize");
+		forbidden.add("getClass");
 
 		FORBIDDEN_METHOD = Collections.unmodifiableSet(forbidden);
 	}
