@@ -111,4 +111,19 @@ public class TemplateTest {
 
     Assert.assertEquals(aware.eval(), "h");
   }
+
+  @Test(expected = RuntimeException.class)
+  public void test_missing_method() {
+    String template = "${a.size()}";
+
+    SegmentsEvalAware aware = ParseHelper.compile(template);
+
+    try {
+      aware.eval();
+    } catch (Exception ignored) {
+
+    }
+
+    aware.eval();
+  }
 }

@@ -13,10 +13,10 @@ public class MethodHelper {
   private static final Object OBJECT = new Object();
 
   private static final ConcurrentMap<MethodDescriptor, WeakReference<Method>> EXIST_METHODS =
-    new ConcurrentHashMap<>(32);
+    new ConcurrentHashMap<>(128);
 
   private static final ConcurrentMap<MethodDescriptor, Object> FORBIDDEN_METHODS =
-    new ConcurrentHashMap<>(32);
+    new ConcurrentHashMap<>(128);
 
   private static final Map<Class<?>, Class<?>> PRIMITIVES_WRAPPER;
 
@@ -82,6 +82,7 @@ public class MethodHelper {
       if (null != (match = fallThrough(descriptor))) {
         return match;
       }
+      FORBIDDEN_METHODS.putIfAbsent(descriptor, OBJECT);
       throw new RuntimeException(e);
     }
   }
@@ -98,7 +99,6 @@ public class MethodHelper {
         }
       }
     }
-    FORBIDDEN_METHODS.putIfAbsent(descriptor, OBJECT);
     return null;
   }
 
