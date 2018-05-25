@@ -82,8 +82,8 @@ public class MethodHelper {
       if (null != (match = fallThrough(descriptor))) {
         return match;
       }
+      throw new RuntimeException(e);
     }
-    throw new RuntimeException("no such method " + methodName);
   }
 
   private static Method fallThrough(MethodDescriptor descriptor) {
