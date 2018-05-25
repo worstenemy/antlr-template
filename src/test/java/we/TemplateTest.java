@@ -21,6 +21,24 @@ public class TemplateTest {
     }
   }
 
+  public static class Foo {
+  	private final String a;
+  	private final Foo next;
+
+  	public Foo(String a, Foo next) {
+  		this.a = a;
+  		this.next = next;
+    }
+
+	  public String getA() {
+		  return a;
+	  }
+
+	  public Foo getNext() {
+		  return next;
+	  }
+  }
+
   @Before
   public void setUp() {
     RuntimeManager.setArgs("a", "hello world");
@@ -54,5 +72,24 @@ public class TemplateTest {
     String template = "select ${a} from ${b} where c >= '${add(1, 10000)}'";
     SegmentsEvalAware aware = ParseHelper.compile(template);
     Assert.assertEquals(aware.eval(), "select hello world from this is test where c >= '10001'");
+  }
+
+  @Test
+  public void test_object() {
+    String template = "${a.length()}";
+    SegmentsEvalAware aware = ParseHelper.compile(template);
+    Assert.assertEquals(aware.eval(), "11");
+  }
+
+  @Test
+  public void test_object_access() {
+  	Foo foo1 = new Foo("hello world", null);
+  	Foo foo2 = new Foo("this is test", foo1);
+  	RuntimeManager.setArgs("foo", foo2);
+
+  	String template = "${foo.next.a.length()}";
+  	SegmentsEvalAware aware = ParseHelper.compile(template);
+
+  	Assert.assertEquals(aware.eval(), "11");
   }
 }
