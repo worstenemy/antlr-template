@@ -20,7 +20,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
 	@Override
 	public Object visitOArgCall(TemplateParser.OArgCallContext ctx) {
 		Object target = visit(ctx.tinyObject());
-		String method = ctx.IDENTIFIER().getText();
+		String methodName = ctx.IDENTIFIER().getText();
 
 		List<TemplateParser.TinyExprContext> exprContexts = ctx.tinyExpr();
 		Object[] args = new Object[exprContexts.size()];
@@ -28,23 +28,23 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
 			args[i] = visit(exprContexts.get(i));
 		}
 
-		return Reflection.invokeMethod(target, method, args);
+		return Reflection.invokeMethod(target, methodName, args);
 	}
 
 	@Override
 	public Object visitONonArgCall(TemplateParser.ONonArgCallContext ctx) {
 		Object target = visit(ctx.tinyObject());
-		String method = ctx.IDENTIFIER().getText();
+		String methodName = ctx.IDENTIFIER().getText();
 
-		return Reflection.invokeMethod(target, method);
+		return Reflection.invokeMethod(target, methodName);
 	}
 
 	@Override
 	public Object visitOAccess(TemplateParser.OAccessContext ctx) {
 		Object target = visit(ctx.tinyObject());
-		String field = ctx.IDENTIFIER().getText();
+		String fieldName = ctx.IDENTIFIER().getText();
 
-		return Reflection.invokeField(target, field);
+		return Reflection.invokeField(target, fieldName);
 	}
 
 	/***************************************** function *****************************************/
