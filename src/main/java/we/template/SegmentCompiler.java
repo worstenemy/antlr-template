@@ -6,6 +6,7 @@ import we.template.antlr.TemplateBaseListener;
 import we.template.antlr.TemplateParser;
 import we.template.segment.ArgEvalSegment;
 import we.template.segment.FunctionEvalSegment;
+import we.template.segment.ObjectEvalSegment;
 import we.template.segment.PlainTextSegment;
 
 import java.util.ArrayList;
@@ -46,6 +47,31 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
     this.segments.add(new PlainTextSegment(plainText));
 
     this.lastAccess = stop.getTokenIndex() + 1;
+  }
+
+  @Override
+  public void enterOSymbol(TemplateParser.OSymbolContext ctx) {
+    Token start = ctx.getStart();
+    Token stop = ctx.getStop();
+
+    String object = append(start.getTokenIndex(), stop.getTokenIndex());
+
+    this.segments.add(new ObjectEvalSegment(object));
+  }
+
+  @Override
+  public void enterOAccess(TemplateParser.OAccessContext ctx) {
+    super.enterOAccess(ctx);
+  }
+
+  @Override
+  public void enterONonArgCall(TemplateParser.ONonArgCallContext ctx) {
+    super.enterONonArgCall(ctx);
+  }
+
+  @Override
+  public void enterOArgCall(TemplateParser.OArgCallContext ctx) {
+    super.enterOArgCall(ctx);
   }
 
   @Override

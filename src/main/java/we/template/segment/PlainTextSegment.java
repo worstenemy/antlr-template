@@ -15,7 +15,7 @@ public class PlainTextSegment implements Segment {
   }
 
   @Override
-  public String eval() {
+  public Object eval() {
     return this.plainText;
   }
 }

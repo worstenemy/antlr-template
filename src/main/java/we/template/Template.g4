@@ -28,10 +28,10 @@ tinyStmt: IDENTIFIER     #sId
         | tinyObject     #sObject
         | tinyCall       #sCall;
 
-tinyObject: tinyObject '.' IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')'   #oArgCall
+tinyObject: IDENTIFIER                                                   #oSymbol
+          | tinyObject '.' IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')'   #oArgCall
           | tinyObject '.' IDENTIFIER '(' ')'                            #oNonArgCall
-          | tinyObject '.' IDENTIFIER                                    #oAccess
-          | IDENTIFIER                                                   #oSymbol;
+          | tinyObject '.' IDENTIFIER                                    #oAccess;
 
 tinyCall: IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')';
 

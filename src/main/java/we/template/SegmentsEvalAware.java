@@ -11,7 +11,7 @@ public interface SegmentsEvalAware {
       return "";
     }
     if (1 == segments.size()) {
-      return segments.get(0).eval();
+      return String.valueOf(segments.get(0).eval());
     }
     StringBuilder builder = new StringBuilder();
     for (Segment segment : segments) {

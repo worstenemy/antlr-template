@@ -16,7 +16,7 @@ public class ArgEvalSegment implements Segment {
   }
 
   @Override
-  public String eval() {
-    return String.valueOf(RuntimeManager.arg(this.arg));
+  public Object eval() {
+    return RuntimeManager.arg(this.arg);
   }
 }

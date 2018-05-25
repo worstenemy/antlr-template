@@ -737,7 +737,7 @@ public class TemplateParser extends Parser {
 						_localctx = new OArgCallContext(new TinyObjectContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_tinyObject);
 						setState(51);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(52);
 						match(T__13);
 						setState(53);
@@ -771,7 +771,7 @@ public class TemplateParser extends Parser {
 						_localctx = new ONonArgCallContext(new TinyObjectContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_tinyObject);
 						setState(65);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 						setState(66);
 						match(T__13);
 						setState(67);
@@ -787,7 +787,7 @@ public class TemplateParser extends Parser {
 						_localctx = new OAccessContext(new TinyObjectContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_tinyObject);
 						setState(70);
-						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
+						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
 						setState(71);
 						match(T__13);
 						setState(72);
@@ -1056,11 +1056,11 @@ public class TemplateParser extends Parser {
 	private boolean tinyObject_sempred(TinyObjectContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 4);
-		case 1:
 			return precpred(_ctx, 3);
-		case 2:
+		case 1:
 			return precpred(_ctx, 2);
+		case 2:
+			return precpred(_ctx, 1);
 		}
 		return true;
 	}
@@ -1082,10 +1082,10 @@ public class TemplateParser extends Parser {
 		"\2\2\2\'(\n\3\2\2(\13\3\2\2\2)*\7\16\2\2*+\5\16\b\2+,\7\17\2\2,\r\3\2"+
 		"\2\2-\61\7\25\2\2.\61\5\20\t\2/\61\5\22\n\2\60-\3\2\2\2\60.\3\2\2\2\60"+
 		"/\3\2\2\2\61\17\3\2\2\2\62\63\b\t\1\2\63\64\7\25\2\2\64M\3\2\2\2\65\66"+
-		"\f\6\2\2\66\67\7\20\2\2\678\7\25\2\289\7\21\2\29>\5\24\13\2:;\7\22\2\2"+
+		"\f\5\2\2\66\67\7\20\2\2\678\7\25\2\289\7\21\2\29>\5\24\13\2:;\7\22\2\2"+
 		";=\5\24\13\2<:\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@>\3\2\2"+
-		"\2AB\7\23\2\2BL\3\2\2\2CD\f\5\2\2DE\7\20\2\2EF\7\25\2\2FG\7\21\2\2GL\7"+
-		"\23\2\2HI\f\4\2\2IJ\7\20\2\2JL\7\25\2\2K\65\3\2\2\2KC\3\2\2\2KH\3\2\2"+
+		"\2AB\7\23\2\2BL\3\2\2\2CD\f\4\2\2DE\7\20\2\2EF\7\25\2\2FG\7\21\2\2GL\7"+
+		"\23\2\2HI\f\3\2\2IJ\7\20\2\2JL\7\25\2\2K\65\3\2\2\2KC\3\2\2\2KH\3\2\2"+
 		"\2LO\3\2\2\2MK\3\2\2\2MN\3\2\2\2N\21\3\2\2\2OM\3\2\2\2PQ\7\25\2\2QR\7"+
 		"\21\2\2RW\5\24\13\2ST\7\22\2\2TV\5\24\13\2US\3\2\2\2VY\3\2\2\2WU\3\2\2"+
 		"\2WX\3\2\2\2XZ\3\2\2\2YW\3\2\2\2Z[\7\23\2\2[\23\3\2\2\2\\b\7\25\2\2]b"+
