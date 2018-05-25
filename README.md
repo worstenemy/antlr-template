@@ -11,8 +11,9 @@ public class Function {
 
 String template = "select ${a} from ${b} where c >= '${concat(a, concat(a, b))}'"
 
-RuntimeManager.setArg("a", "hello world");
-RuntimeManager.setArg("b", "this is test");
+RuntimeManager.setArgs("a", "hello world");
+RuntimeManager.setArgs("b", "this is test");
+RuntimeManager.setFunctions(Function.class);
 
 String parsed = ParseHelper.compile(template).eval();
 
