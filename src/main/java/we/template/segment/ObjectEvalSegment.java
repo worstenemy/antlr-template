@@ -11,11 +11,11 @@ public class ObjectEvalSegment implements Segment {
 
 	@Override
 	public String getText() {
-		return null;
+		return this.object;
 	}
 
 	@Override
-	public String eval() {
+	public Object eval() {
 		return null;
 	}
 }

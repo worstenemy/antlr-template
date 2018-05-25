@@ -50,28 +50,13 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
   }
 
   @Override
-  public void enterOSymbol(TemplateParser.OSymbolContext ctx) {
+  public void enterSObject(TemplateParser.SObjectContext ctx) {
     Token start = ctx.getStart();
     Token stop = ctx.getStop();
 
     String object = append(start.getTokenIndex(), stop.getTokenIndex());
 
     this.segments.add(new ObjectEvalSegment(object));
-  }
-
-  @Override
-  public void enterOAccess(TemplateParser.OAccessContext ctx) {
-    super.enterOAccess(ctx);
-  }
-
-  @Override
-  public void enterONonArgCall(TemplateParser.ONonArgCallContext ctx) {
-    super.enterONonArgCall(ctx);
-  }
-
-  @Override
-  public void enterOArgCall(TemplateParser.OArgCallContext ctx) {
-    super.enterOArgCall(ctx);
   }
 
   @Override
