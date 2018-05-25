@@ -20,12 +20,12 @@ public class FunctionEvalSegment implements Segment {
   }
 
   @Override
-  public Object eval() {
+  public String eval() {
     Pair<ParseTree, BufferedTokenStream> pair =
       ParseHelper.invoke("eval function", this.function, ParseHelper.TEMPLATE_PARSER, ParseHelper.TEMPLATE_LEXER,
         TemplateParser::tinyCall);
     EvalVisitor visitor = new EvalVisitor();
-    return visitor.visit(pair.getFirst());
+    return String.valueOf(visitor.visit(pair.getFirst()));
   }
 
   private static class EvalVisitor extends TemplateBaseVisitor<Object> {
