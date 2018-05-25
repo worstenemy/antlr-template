@@ -24,7 +24,7 @@ public class Reflection {
     FORBIDDEN_METHOD = Collections.unmodifiableSet(forbidden);
   }
 
-  public static Object getField(Object target, String fieldName) {
+  public static Object invokeField(Object target, String fieldName) {
     Class<?> clazz = target.getClass();
     Field field = getOrThrow(() -> clazz.getDeclaredField(fieldName));
 

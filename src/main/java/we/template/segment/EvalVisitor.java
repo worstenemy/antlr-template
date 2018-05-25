@@ -44,7 +44,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
 		Object target = visit(ctx.tinyObject());
 		String field = ctx.IDENTIFIER().getText();
 
-		return Reflection.getField(target, field);
+		return Reflection.invokeField(target, field);
 	}
 
 	/***************************************** function *****************************************/
