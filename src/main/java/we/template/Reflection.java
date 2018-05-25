@@ -25,12 +25,12 @@ public class Reflection {
 
 	public static Object getField(Object target, String fieldName) {
 		Class<?> clazz = target.getClass();
-		Field field = applyOrThrow(() -> clazz.getDeclaredField(fieldName));
+		Field field = getOrThrow(() -> clazz.getDeclaredField(fieldName));
 
 		boolean accessible = field.isAccessible();
 		field.setAccessible(true);
 
-		Object result = applyOrThrow(() -> field.get(target));
+		Object result = getOrThrow(() -> field.get(target));
 		field.setAccessible(accessible);
 		return result;
 	}
@@ -40,7 +40,7 @@ public class Reflection {
 			throw new RuntimeException("invoke forbidden method: " + methodName);
 		}
 		Class<?> clazz = target.getClass();
-		Method method = applyOrThrow(() -> {
+		Method method = getOrThrow(() -> {
 			if (EQUALS.equals(methodName)) {
 				Class<?>[] paramType = {Object.class};
 				return clazz.getMethod(EQUALS, paramType);
@@ -58,13 +58,13 @@ public class Reflection {
 		boolean accessible = method.isAccessible();
 		method.setAccessible(true);
 
-		Object result = applyOrThrow(() -> method.invoke(target, args));
+		Object result = getOrThrow(() -> method.invoke(target, args));
 		method.setAccessible(accessible);
 
 		return result;
 	}
 
-	private static <T> T applyOrThrow(SupplierThrow<T> function) {
+	private static <T> T getOrThrow(SupplierThrow<T> function) {
 		try {
 			return function.get();
 		} catch (Exception e) {
