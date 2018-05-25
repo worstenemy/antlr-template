@@ -8,6 +8,7 @@ import we.template.segment.ArgEvalSegment;
 import we.template.segment.FunctionEvalSegment;
 import we.template.segment.ObjectEvalSegment;
 import we.template.segment.PlainTextSegment;
+import we.template.segment.Segment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import we.template.Pair;
 import we.template.ParseHelper;
-import we.template.Segment;
 import we.template.antlr.TemplateParser;
 
 

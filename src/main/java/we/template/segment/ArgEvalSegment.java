@@ -1,7 +1,6 @@
 package we.template.segment;
 
 import we.template.RuntimeManager;
-import we.template.Segment;
 
 public class ArgEvalSegment extends Segment {
   public ArgEvalSegment(String arg) {

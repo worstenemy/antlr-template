@@ -1,5 +1,7 @@
 package we.template;
 
+import we.template.segment.Segment;
+
 import java.util.List;
 
 public interface SegmentsEvalAware {

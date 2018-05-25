@@ -1,4 +1,4 @@
-package we.template;
+package we.template.segment;
 
 public abstract class Segment {
   private final String text;
