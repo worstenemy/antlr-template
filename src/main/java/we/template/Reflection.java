@@ -2,8 +2,27 @@ package we.template;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Reflection {
+	private static final String EQUALS = "equals";
+
+	private static final Set<String> FORBIDDEN_METHOD;
+
+	static {
+		Set<String> forbidden = new HashSet<>();
+
+		forbidden.add("clone");
+		forbidden.add("notify");
+		forbidden.add("notifyAll");
+		forbidden.add("wait");
+		forbidden.add("finalize");
+
+		FORBIDDEN_METHOD = Collections.unmodifiableSet(forbidden);
+	}
+
 	public static Object getField(Object target, String fieldName) {
 		Class<?> clazz = target.getClass();
 		Field field = applyOrThrow(() -> clazz.getDeclaredField(fieldName));
@@ -17,8 +36,15 @@ public class Reflection {
 	}
 
 	public static Object invokeMethod(Object target, String methodName, Object... args) {
+		if (FORBIDDEN_METHOD.contains(methodName)) {
+			throw new RuntimeException("invoke forbidden method: " + methodName);
+		}
 		Class<?> clazz = target.getClass();
 		Method method = applyOrThrow(() -> {
+			if (EQUALS.equals(methodName)) {
+				Class<?>[] paramType = {Object.class};
+				return clazz.getMethod(EQUALS, paramType);
+			}
 			if (null == args) {
 				return clazz.getMethod(methodName);
 			}
@@ -38,16 +64,11 @@ public class Reflection {
 		return result;
 	}
 
-	private static <T> T applyOrThrow(Function<T> function) {
+	private static <T> T applyOrThrow(SupplierThrow<T> function) {
 		try {
-			return function.apply();
+			return function.get();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-	}
-
-	@FunctionalInterface
-	private interface Function<T> {
-		T apply() throws Exception;
 	}
 }
