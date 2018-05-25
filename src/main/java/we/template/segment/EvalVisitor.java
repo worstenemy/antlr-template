@@ -1,6 +1,7 @@
 package we.template.segment;
 
 import we.template.Function;
+import we.template.Reflection;
 import we.template.RuntimeManager;
 import we.template.antlr.TemplateBaseVisitor;
 import we.template.antlr.TemplateParser;
@@ -27,9 +28,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
 			args[i] = visit(exprContexts.get(i));
 		}
 
-		//TODO
-
-		return null;
+		return Reflection.invokeMethod(target, method, args);
 	}
 
 	@Override
@@ -37,9 +36,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
 		Object target = visit(ctx.tinyObject());
 		String method = ctx.IDENTIFIER().getText();
 
-		//TODO
-
-		return null;
+		return Reflection.invokeMethod(target, method);
 	}
 
 	@Override
@@ -47,9 +44,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
 		Object target = visit(ctx.tinyObject());
 		String field = ctx.IDENTIFIER().getText();
 
-		//TODO
-
-		return null;
+		return Reflection.getField(target, field);
 	}
 
 	/***************************************** function *****************************************/
