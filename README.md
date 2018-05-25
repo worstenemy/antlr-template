@@ -18,4 +18,6 @@ RuntimeManager.setFunctions(Function.class);
 String parsed = ParseHelper.compile(template).eval();
 
 Assert.assertEquals(parsed, "select hello world from this is test where c >= 'hello worldhello worldthis is test'");
+
+
 ```
