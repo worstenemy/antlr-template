@@ -2,20 +2,13 @@ package we.template.segment;
 
 import we.template.Segment;
 
-public class PlainTextSegment implements Segment {
-  private final String plainText;
-
+public class PlainTextSegment extends Segment {
   public PlainTextSegment(String plainText) {
-    this.plainText = plainText;
-  }
-
-  @Override
-  public String getText() {
-    return this.plainText;
+    super(plainText);
   }
 
   @Override
   public Object eval() {
-    return this.plainText;
+    return getText();
   }
 }

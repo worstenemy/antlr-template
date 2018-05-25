@@ -1,7 +1,15 @@
 package we.template;
 
-public interface Segment {
-  String getText();
+public abstract class Segment {
+  private final String text;
 
-  Object eval();
+  public Segment(String text) {
+    this.text = text;
+  }
+
+  public String getText() {
+    return this.text;
+  }
+
+  public abstract Object eval();
 }
