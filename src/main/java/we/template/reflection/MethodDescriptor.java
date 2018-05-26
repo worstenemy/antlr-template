@@ -30,7 +30,7 @@ public class MethodDescriptor {
 
   @Override
   public int hashCode() {
-    return 31 * this.clazz.hashCode() ^ this.descriptor.hashCode();
+    return 31 * this.clazz.hashCode() & this.descriptor.hashCode();
   }
 
   @Override
