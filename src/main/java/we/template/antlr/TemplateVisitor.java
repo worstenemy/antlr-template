@@ -1,4 +1,4 @@
-// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.6
+// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
 package we.template.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -70,6 +70,13 @@ public interface TemplateVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSId(TemplateParser.SIdContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code sCall}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSCall(TemplateParser.SCallContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code sObject}
 	 * labeled alternative in {@link TemplateParser#tinyStmt}.
 	 * @param ctx the parse tree
@@ -77,12 +84,12 @@ public interface TemplateVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSObject(TemplateParser.SObjectContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Visit a parse tree produced by the {@code oCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSCall(TemplateParser.SCallContext ctx);
+	T visitOCall(TemplateParser.OCallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code oAccess}
 	 * labeled alternative in {@link TemplateParser#tinyObject}.

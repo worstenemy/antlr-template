@@ -62,9 +62,9 @@ public class TemplateTest {
 
   @Test
   public void test_function_concat_success() {
-    String template = "${concat(a, concat(a, b))}";
+    String template = "${concat(a, concat(a, b)).substring(0, 5)}";
     SegmentsEvalAware aware = ParseHelper.compile(template);
-    Assert.assertEquals(aware.eval(), "hello worldhello worldthis is test");
+    Assert.assertEquals(aware.eval(), "hello");
   }
 
   @Test

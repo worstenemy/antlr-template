@@ -1,4 +1,4 @@
-// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.6
+// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
 package we.template.antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -124,6 +124,18 @@ public class TemplateBaseListener implements TemplateListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSCall(TemplateParser.SCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSCall(TemplateParser.SCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSObject(TemplateParser.SObjectContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -136,13 +148,13 @@ public class TemplateBaseListener implements TemplateListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSCall(TemplateParser.SCallContext ctx) { }
+	@Override public void enterOCall(TemplateParser.OCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSCall(TemplateParser.SCallContext ctx) { }
+	@Override public void exitOCall(TemplateParser.OCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

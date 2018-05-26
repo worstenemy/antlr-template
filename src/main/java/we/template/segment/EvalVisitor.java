@@ -18,6 +18,11 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
   }
 
   @Override
+  public Object visitOCall(TemplateParser.OCallContext ctx) {
+    return visitTinyCall(ctx.tinyCall());
+  }
+
+  @Override
   public Object visitOArgCall(TemplateParser.OArgCallContext ctx) {
     Object target = visit(ctx.tinyObject());
     String methodName = ctx.IDENTIFIER().getText();

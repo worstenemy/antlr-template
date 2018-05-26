@@ -1,4 +1,4 @@
-// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.6
+// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
 package we.template.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -108,6 +108,18 @@ public interface TemplateListener extends ParseTreeListener {
 	 */
 	void exitSId(TemplateParser.SIdContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code sCall}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterSCall(TemplateParser.SCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sCall}
+	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitSCall(TemplateParser.SCallContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code sObject}
 	 * labeled alternative in {@link TemplateParser#tinyStmt}.
 	 * @param ctx the parse tree
@@ -120,17 +132,17 @@ public interface TemplateListener extends ParseTreeListener {
 	 */
 	void exitSObject(TemplateParser.SObjectContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Enter a parse tree produced by the {@code oCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
 	 * @param ctx the parse tree
 	 */
-	void enterSCall(TemplateParser.SCallContext ctx);
+	void enterOCall(TemplateParser.OCallContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Exit a parse tree produced by the {@code oCall}
+	 * labeled alternative in {@link TemplateParser#tinyObject}.
 	 * @param ctx the parse tree
 	 */
-	void exitSCall(TemplateParser.SCallContext ctx);
+	void exitOCall(TemplateParser.OCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code oAccess}
 	 * labeled alternative in {@link TemplateParser#tinyObject}.

@@ -1,4 +1,4 @@
-// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.6
+// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
 package we.template.antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -573,19 +573,19 @@ public class TemplateParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new SObjectContext(_localctx);
+				_localctx = new SCallContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(44);
-				tinyObject(0);
+				tinyCall();
 				}
 				break;
 			case 3:
-				_localctx = new SCallContext(_localctx);
+				_localctx = new SObjectContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(45);
-				tinyCall();
+				tinyObject(0);
 				}
 				break;
 			}
@@ -610,6 +610,25 @@ public class TemplateParser extends Parser {
 		public TinyObjectContext() { }
 		public void copyFrom(TinyObjectContext ctx) {
 			super.copyFrom(ctx);
+		}
+	}
+	public static class OCallContext extends TinyObjectContext {
+		public TinyCallContext tinyCall() {
+			return getRuleContext(TinyCallContext.class,0);
+		}
+		public OCallContext(TinyObjectContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof TemplateListener ) ((TemplateListener)listener).enterOCall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof TemplateListener ) ((TemplateListener)listener).exitOCall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof TemplateVisitor ) return ((TemplateVisitor<? extends T>)visitor).visitOCall(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class OAccessContext extends TinyObjectContext {
@@ -712,57 +731,72 @@ public class TemplateParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			{
-			_localctx = new OSymbolContext(_localctx);
-			_ctx = _localctx;
-			_prevctx = _localctx;
+			setState(51);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			case 1:
+				{
+				_localctx = new OSymbolContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 
-			setState(49);
-			match(IDENTIFIER);
+				setState(49);
+				match(IDENTIFIER);
+				}
+				break;
+			case 2:
+				{
+				_localctx = new OCallContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(50);
+				tinyCall();
+				}
+				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(75);
+			setState(77);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(73);
+					setState(75);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 					case 1:
 						{
 						_localctx = new OArgCallContext(new TinyObjectContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_tinyObject);
-						setState(51);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(52);
-						match(T__13);
 						setState(53);
-						match(IDENTIFIER);
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(54);
-						match(T__14);
+						match(T__13);
 						setState(55);
+						match(IDENTIFIER);
+						setState(56);
+						match(T__14);
+						setState(57);
 						tinyExpr();
-						setState(60);
+						setState(62);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 						while (_la==T__15) {
 							{
 							{
-							setState(56);
+							setState(58);
 							match(T__15);
-							setState(57);
+							setState(59);
 							tinyExpr();
 							}
 							}
-							setState(62);
+							setState(64);
 							_errHandler.sync(this);
 							_la = _input.LA(1);
 						}
-						setState(63);
+						setState(65);
 						match(T__16);
 						}
 						break;
@@ -770,15 +804,15 @@ public class TemplateParser extends Parser {
 						{
 						_localctx = new ONonArgCallContext(new TinyObjectContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_tinyObject);
-						setState(65);
-						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(66);
-						match(T__13);
 						setState(67);
-						match(IDENTIFIER);
+						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 						setState(68);
-						match(T__14);
+						match(T__13);
 						setState(69);
+						match(IDENTIFIER);
+						setState(70);
+						match(T__14);
+						setState(71);
 						match(T__16);
 						}
 						break;
@@ -786,20 +820,20 @@ public class TemplateParser extends Parser {
 						{
 						_localctx = new OAccessContext(new TinyObjectContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_tinyObject);
-						setState(70);
-						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-						setState(71);
-						match(T__13);
 						setState(72);
+						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
+						setState(73);
+						match(T__13);
+						setState(74);
 						match(IDENTIFIER);
 						}
 						break;
 					}
 					} 
 				}
-				setState(77);
+				setState(79);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
 			}
 			}
 		}
@@ -848,29 +882,29 @@ public class TemplateParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(78);
-			match(IDENTIFIER);
-			setState(79);
-			match(T__14);
 			setState(80);
+			match(IDENTIFIER);
+			setState(81);
+			match(T__14);
+			setState(82);
 			tinyExpr();
-			setState(85);
+			setState(87);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__15) {
 				{
 				{
-				setState(81);
+				setState(83);
 				match(T__15);
-				setState(82);
+				setState(84);
 				tinyExpr();
 				}
 				}
-				setState(87);
+				setState(89);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(88);
+			setState(90);
 			match(T__16);
 			}
 		}
@@ -990,14 +1024,14 @@ public class TemplateParser extends Parser {
 		TinyExprContext _localctx = new TinyExprContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_tinyExpr);
 		try {
-			setState(95);
+			setState(97);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				_localctx = new EIdContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(90);
+				setState(92);
 				match(IDENTIFIER);
 				}
 				break;
@@ -1005,7 +1039,7 @@ public class TemplateParser extends Parser {
 				_localctx = new EIntContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(91);
+				setState(93);
 				match(INTEGER_VALUE);
 				}
 				break;
@@ -1013,7 +1047,7 @@ public class TemplateParser extends Parser {
 				_localctx = new EStrContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(92);
+				setState(94);
 				match(QUOTED_IDENTIFIER);
 				}
 				break;
@@ -1021,7 +1055,7 @@ public class TemplateParser extends Parser {
 				_localctx = new EObjectContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(93);
+				setState(95);
 				tinyObject(0);
 				}
 				break;
@@ -1029,7 +1063,7 @@ public class TemplateParser extends Parser {
 				_localctx = new ECallContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(94);
+				setState(96);
 				tinyCall();
 				}
 				break;
@@ -1066,31 +1100,32 @@ public class TemplateParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\27d\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\27f\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
 		"\2\6\2\30\n\2\r\2\16\2\31\3\2\3\2\3\3\3\3\5\3 \n\3\3\4\3\4\5\4$\n\4\3"+
-		"\5\3\5\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\5\b\61\n\b\3\t\3\t\3\t\3\t"+
-		"\3\t\3\t\3\t\3\t\3\t\3\t\7\t=\n\t\f\t\16\t@\13\t\3\t\3\t\3\t\3\t\3\t\3"+
-		"\t\3\t\3\t\3\t\3\t\7\tL\n\t\f\t\16\tO\13\t\3\n\3\n\3\n\3\n\3\n\7\nV\n"+
-		"\n\f\n\16\nY\13\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\5\13b\n\13\3\13\2\3"+
-		"\20\f\2\4\6\b\n\f\16\20\22\24\2\4\3\2\3\r\3\2\16\17g\2\27\3\2\2\2\4\37"+
-		"\3\2\2\2\6#\3\2\2\2\b%\3\2\2\2\n\'\3\2\2\2\f)\3\2\2\2\16\60\3\2\2\2\20"+
-		"\62\3\2\2\2\22P\3\2\2\2\24a\3\2\2\2\26\30\5\4\3\2\27\26\3\2\2\2\30\31"+
-		"\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\33\3\2\2\2\33\34\7\2\2\3\34\3"+
-		"\3\2\2\2\35 \5\f\7\2\36 \5\6\4\2\37\35\3\2\2\2\37\36\3\2\2\2 \5\3\2\2"+
-		"\2!$\5\b\5\2\"$\5\n\6\2#!\3\2\2\2#\"\3\2\2\2$\7\3\2\2\2%&\t\2\2\2&\t\3"+
-		"\2\2\2\'(\n\3\2\2(\13\3\2\2\2)*\7\16\2\2*+\5\16\b\2+,\7\17\2\2,\r\3\2"+
-		"\2\2-\61\7\25\2\2.\61\5\20\t\2/\61\5\22\n\2\60-\3\2\2\2\60.\3\2\2\2\60"+
-		"/\3\2\2\2\61\17\3\2\2\2\62\63\b\t\1\2\63\64\7\25\2\2\64M\3\2\2\2\65\66"+
-		"\f\5\2\2\66\67\7\20\2\2\678\7\25\2\289\7\21\2\29>\5\24\13\2:;\7\22\2\2"+
-		";=\5\24\13\2<:\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@>\3\2\2"+
-		"\2AB\7\23\2\2BL\3\2\2\2CD\f\4\2\2DE\7\20\2\2EF\7\25\2\2FG\7\21\2\2GL\7"+
-		"\23\2\2HI\f\3\2\2IJ\7\20\2\2JL\7\25\2\2K\65\3\2\2\2KC\3\2\2\2KH\3\2\2"+
-		"\2LO\3\2\2\2MK\3\2\2\2MN\3\2\2\2N\21\3\2\2\2OM\3\2\2\2PQ\7\25\2\2QR\7"+
-		"\21\2\2RW\5\24\13\2ST\7\22\2\2TV\5\24\13\2US\3\2\2\2VY\3\2\2\2WU\3\2\2"+
-		"\2WX\3\2\2\2XZ\3\2\2\2YW\3\2\2\2Z[\7\23\2\2[\23\3\2\2\2\\b\7\25\2\2]b"+
-		"\7\24\2\2^b\7\26\2\2_b\5\20\t\2`b\5\22\n\2a\\\3\2\2\2a]\3\2\2\2a^\3\2"+
-		"\2\2a_\3\2\2\2a`\3\2\2\2b\25\3\2\2\2\13\31\37#\60>KMWa";
+		"\5\3\5\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\5\b\61\n\b\3\t\3\t\3\t\5\t"+
+		"\66\n\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\7\t?\n\t\f\t\16\tB\13\t\3\t\3\t\3"+
+		"\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\7\tN\n\t\f\t\16\tQ\13\t\3\n\3\n\3\n\3\n"+
+		"\3\n\7\nX\n\n\f\n\16\n[\13\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\5\13d\n"+
+		"\13\3\13\2\3\20\f\2\4\6\b\n\f\16\20\22\24\2\4\3\2\3\r\3\2\16\17j\2\27"+
+		"\3\2\2\2\4\37\3\2\2\2\6#\3\2\2\2\b%\3\2\2\2\n\'\3\2\2\2\f)\3\2\2\2\16"+
+		"\60\3\2\2\2\20\65\3\2\2\2\22R\3\2\2\2\24c\3\2\2\2\26\30\5\4\3\2\27\26"+
+		"\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\33\3\2\2\2\33\34"+
+		"\7\2\2\3\34\3\3\2\2\2\35 \5\f\7\2\36 \5\6\4\2\37\35\3\2\2\2\37\36\3\2"+
+		"\2\2 \5\3\2\2\2!$\5\b\5\2\"$\5\n\6\2#!\3\2\2\2#\"\3\2\2\2$\7\3\2\2\2%"+
+		"&\t\2\2\2&\t\3\2\2\2\'(\n\3\2\2(\13\3\2\2\2)*\7\16\2\2*+\5\16\b\2+,\7"+
+		"\17\2\2,\r\3\2\2\2-\61\7\25\2\2.\61\5\22\n\2/\61\5\20\t\2\60-\3\2\2\2"+
+		"\60.\3\2\2\2\60/\3\2\2\2\61\17\3\2\2\2\62\63\b\t\1\2\63\66\7\25\2\2\64"+
+		"\66\5\22\n\2\65\62\3\2\2\2\65\64\3\2\2\2\66O\3\2\2\2\678\f\5\2\289\7\20"+
+		"\2\29:\7\25\2\2:;\7\21\2\2;@\5\24\13\2<=\7\22\2\2=?\5\24\13\2><\3\2\2"+
+		"\2?B\3\2\2\2@>\3\2\2\2@A\3\2\2\2AC\3\2\2\2B@\3\2\2\2CD\7\23\2\2DN\3\2"+
+		"\2\2EF\f\4\2\2FG\7\20\2\2GH\7\25\2\2HI\7\21\2\2IN\7\23\2\2JK\f\3\2\2K"+
+		"L\7\20\2\2LN\7\25\2\2M\67\3\2\2\2ME\3\2\2\2MJ\3\2\2\2NQ\3\2\2\2OM\3\2"+
+		"\2\2OP\3\2\2\2P\21\3\2\2\2QO\3\2\2\2RS\7\25\2\2ST\7\21\2\2TY\5\24\13\2"+
+		"UV\7\22\2\2VX\5\24\13\2WU\3\2\2\2X[\3\2\2\2YW\3\2\2\2YZ\3\2\2\2Z\\\3\2"+
+		"\2\2[Y\3\2\2\2\\]\7\23\2\2]\23\3\2\2\2^d\7\25\2\2_d\7\24\2\2`d\7\26\2"+
+		"\2ad\5\20\t\2bd\5\22\n\2c^\3\2\2\2c_\3\2\2\2c`\3\2\2\2ca\3\2\2\2cb\3\2"+
+		"\2\2d\25\3\2\2\2\f\31\37#\60\65@MOYc";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

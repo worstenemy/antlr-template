@@ -25,10 +25,11 @@ plain: ~('${' | '}');
 braced: '${' tinyStmt '}';
 
 tinyStmt: IDENTIFIER     #sId
-        | tinyObject     #sObject
-        | tinyCall       #sCall;
+        | tinyCall       #sCall
+        | tinyObject     #sObject;
 
 tinyObject: IDENTIFIER                                                   #oSymbol
+          | tinyCall                                                     #oCall
           | tinyObject '.' IDENTIFIER '(' tinyExpr (',' tinyExpr)* ')'   #oArgCall
           | tinyObject '.' IDENTIFIER '(' ')'                            #oNonArgCall
           | tinyObject '.' IDENTIFIER                                    #oAccess;
