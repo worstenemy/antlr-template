@@ -10,7 +10,6 @@ import java.util.List;
 
 public class EvalVisitor extends TemplateBaseVisitor<Object> {
   /************************************* field and method *************************************/
-
   @Override
   public Object visitOSymbol(TemplateParser.OSymbolContext ctx) {
     String symbol = ctx.IDENTIFIER().getText();
