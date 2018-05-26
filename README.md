@@ -6,6 +6,9 @@ there are two arguments:
 ```
 String a = "hello world";
 String b = "this is test";
+
+RuntimeManager.setArgs("a", a);
+RuntimeManager.setArgs("b", b); // register the arguments you want to parse
 ```
 and you got the template:
 ```
