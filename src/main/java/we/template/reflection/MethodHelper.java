@@ -9,6 +9,10 @@ import java.util.concurrent.ConcurrentMap;
 public class MethodHelper {
   private static final Object OBJECT = new Object();
 
+  private static final Class<?>[] EQUALS_SIG = {Object.class};
+
+  private static final String EQUALS = "equals";
+
   private static final ConcurrentMap<MethodDescriptor, WeakReference<Method>> EXIST_METHODS =
     new ConcurrentHashMap<>(128);
 
@@ -27,6 +31,16 @@ public class MethodHelper {
         doPreheat(clazz, method);
       }
     }
+    preheatEquals(clazz);
+  }
+
+  private static void preheatEquals(Class<?> clazz) {
+    MethodDescriptor objectEquals = new MethodDescriptor(clazz, EQUALS, EQUALS_SIG);
+    Method method = getCachedMethod(objectEquals);
+
+    Class<?>[] thisSig = {clazz};
+    MethodDescriptor thisEquals = new MethodDescriptor(clazz, EQUALS, thisSig);
+    cachedMethod(thisEquals, method);
   }
 
   private static void doPreheat(Class<?> clazz, Method method) {
