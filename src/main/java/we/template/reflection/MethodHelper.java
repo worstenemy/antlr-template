@@ -59,8 +59,10 @@ public class MethodHelper {
     if (null != (match = getCachedMethod(descriptor))) {
       return match;
     }
+    // optimize equals search
+    Class<?>[] types = equalsOptimize(methodName, paramTypes);
     try {
-      match = clazz.getMethod(methodName, paramTypes);
+      match = clazz.getMethod(methodName, types);
       cachedMethod(descriptor, match);
       return match;
     } catch (NoSuchMethodException e) {
@@ -70,6 +72,13 @@ public class MethodHelper {
       FORBIDDEN_METHODS.putIfAbsent(descriptor, OBJECT);
       throw new RuntimeException(e);
     }
+  }
+
+  private static Class<?>[] equalsOptimize(String methodName, Class<?>[] paramTypes) {
+    if (EQUALS.equals(methodName) && null != paramTypes && 1 == paramTypes.length) {
+      return EQUALS_SIG;
+    }
+    return paramTypes;
   }
 
   private static Method fallThrough(MethodDescriptor descriptor) {
