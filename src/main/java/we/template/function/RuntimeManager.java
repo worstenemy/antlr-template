@@ -1,4 +1,4 @@
-package we.template;
+package we.template.function;
 
 public class RuntimeManager {
   private final static DefaultRuntimeContext CONTEXT = new DefaultRuntimeContext();
@@ -15,7 +15,7 @@ public class RuntimeManager {
     return CONTEXT.arg(symbol);
   }
 
-  public static Function function(String symbol) {
-    return CONTEXT.function(symbol);
+  public static Function function(String symbol, Class<?>[] paramTypes) {
+    return CONTEXT.function(symbol, paramTypes);
   }
 }

@@ -6,9 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import we.template.ParseHelper;
-import we.template.RuntimeManager;
+import we.template.function.RuntimeManager;
 import we.template.SegmentsEvalAware;
-import we.template.reflection.MethodHelper;
 
 @RunWith(JUnit4.class)
 public class TemplateTest {

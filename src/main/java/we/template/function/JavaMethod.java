@@ -1,4 +1,4 @@
-package we.template;
+package we.template.function;
 
 import java.lang.reflect.Method;
 

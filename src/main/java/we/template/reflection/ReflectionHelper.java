@@ -5,10 +5,12 @@ import we.template.SupplierThrow;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-public class Reflection {
+public class ReflectionHelper {
   private static final Set<String> FORBIDDEN_METHOD;
 
   static {
@@ -22,6 +24,53 @@ public class Reflection {
     forbidden.add("getClass");
 
     FORBIDDEN_METHOD = Collections.unmodifiableSet(forbidden);
+  }
+
+  private static final Map<Class<?>, Class<?>> PRIMITIVE_2_WRAPPER;
+
+  static {
+    Map<Class<?>, Class<?>> primitives2Wrapper = new HashMap<>(8);
+
+    primitives2Wrapper.put(boolean.class, Boolean.class);
+    primitives2Wrapper.put(byte.class, Byte.class);
+    primitives2Wrapper.put(char.class, Character.class);
+    primitives2Wrapper.put(short.class, Short.class);
+    primitives2Wrapper.put(int.class, Integer.class);
+    primitives2Wrapper.put(float.class, Float.class);
+    primitives2Wrapper.put(long.class, Long.class);
+    primitives2Wrapper.put(double.class, Double.class);
+
+    PRIMITIVE_2_WRAPPER = Collections.unmodifiableMap(primitives2Wrapper);
+  }
+
+  public static Class<?> getWrapper(Class<?> primitive) {
+    return PRIMITIVE_2_WRAPPER.get(primitive);
+  }
+
+  public static Class<?>[] replaceTypes(Class<?>[] types) {
+    if (null != types) {
+      for (int i = 0; i < types.length; ++i) {
+        Class<?> type = types[i];
+        types[i] = replaceOrDefault(type);
+      }
+    }
+    return types;
+  }
+
+  public static Class<?>[] getReplacedTypes(Object... args) {
+    if (null == args) {
+      return null;
+    }
+    Class<?>[] paramTypes = new Class[args.length];
+    for (int i = 0; i < args.length; ++i) {
+      Class<?> type = args[i].getClass();
+      paramTypes[i] = replaceOrDefault(type);
+    }
+    return paramTypes;
+  }
+
+  private static Class<?> replaceOrDefault(Class<?> clazz) {
+    return clazz.isPrimitive() ? getWrapper(clazz) : clazz;
   }
 
   public static Object invokeField(Object target, String fieldName) {
@@ -41,15 +90,7 @@ public class Reflection {
       throw new RuntimeException("invoke forbidden method: " + methodName);
     }
     Class<?> clazz = target.getClass();
-    Class<?>[] paramTypes;
-    if (null == args) {
-      paramTypes = null;
-    } else {
-      paramTypes = new Class[args.length];
-      for (int i = 0; i < args.length; ++i) {
-        paramTypes[i] = args[i].getClass();
-      }
-    }
+    Class<?>[] paramTypes = getReplacedTypes(args);
     Method method = getOrThrow(() -> MethodHelper.searchMethod(clazz, methodName, paramTypes));
 
     boolean accessible = method.isAccessible();

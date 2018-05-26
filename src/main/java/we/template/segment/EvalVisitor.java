@@ -1,8 +1,8 @@
 package we.template.segment;
 
-import we.template.Function;
-import we.template.reflection.Reflection;
-import we.template.RuntimeManager;
+import we.template.function.Function;
+import we.template.reflection.ReflectionHelper;
+import we.template.function.RuntimeManager;
 import we.template.antlr.TemplateBaseVisitor;
 import we.template.antlr.TemplateParser;
 
@@ -28,7 +28,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
       args[i] = visit(exprContexts.get(i));
     }
 
-    return Reflection.invokeMethod(target, methodName, args);
+    return ReflectionHelper.invokeMethod(target, methodName, args);
   }
 
   @Override
@@ -36,7 +36,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
     Object target = visit(ctx.tinyObject());
     String methodName = ctx.IDENTIFIER().getText();
 
-    return Reflection.invokeMethod(target, methodName);
+    return ReflectionHelper.invokeMethod(target, methodName);
   }
 
   @Override
@@ -44,7 +44,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
     Object target = visit(ctx.tinyObject());
     String fieldName = ctx.IDENTIFIER().getText();
 
-    return Reflection.invokeField(target, fieldName);
+    return ReflectionHelper.invokeField(target, fieldName);
   }
 
   /***************************************** function *****************************************/
@@ -57,7 +57,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
       args[i] = visit(contexts.get(i));
     }
     Function function;
-    if (null != (function = RuntimeManager.function(symbol))) {
+    if (null != (function = RuntimeManager.function(symbol, ReflectionHelper.getReplacedTypes(args)))) {
       return function.call(args);
     }
     throw new RuntimeException("function not found " + symbol);

@@ -1,4 +1,6 @@
-package we.template;
+package we.template.function;
+
+import we.template.reflection.ReflectionHelper;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -8,17 +10,13 @@ import java.util.concurrent.ConcurrentMap;
 
 public class DefaultRuntimeContext extends RuntimeContext {
   private static final ThreadLocal<Map<String, Object>> ARGS =
-    ThreadLocal.withInitial(() -> new HashMap<String, Object>(16));
+    ThreadLocal.withInitial(() -> new HashMap<String, Object>(32));
 
-  private static final ConcurrentMap<String, Function> FUNCTIONS =
-    new ConcurrentHashMap<>(16);
+  private static final ConcurrentMap<FunctionDescriptor, Function> FUNCTIONS =
+    new ConcurrentHashMap<>(32);
 
   public void setArgs(String symbol, Object value) {
     ARGS.get().putIfAbsent(symbol, value);
-  }
-
-  public void setFunctions(String symbol, Function function) {
-    FUNCTIONS.putIfAbsent(symbol, function);
   }
 
   public void setFunctions(Class<?> functions) {
@@ -26,8 +24,11 @@ public class DefaultRuntimeContext extends RuntimeContext {
     Object instance = createInstance(functions);
     if (null != functions && null != instance && 0 != (methods = functions.getMethods()).length) {
       for (Method method : methods) {
+        Class<?>[] paramTypes = method.getParameterTypes();
+        FunctionDescriptor descriptor = new FunctionDescriptor(method.getName(),
+          ReflectionHelper.replaceTypes(paramTypes));
         Function function = new JavaMethod(method, instance);
-        FUNCTIONS.putIfAbsent(method.getName(), function);
+        FUNCTIONS.putIfAbsent(descriptor, function);
       }
     }
   }
@@ -46,7 +47,8 @@ public class DefaultRuntimeContext extends RuntimeContext {
   }
 
   @Override
-  public Function function(String symbol) {
-    return FUNCTIONS.get(symbol);
+  public Function function(String symbol, Class<?>[] paramTypes) {
+    FunctionDescriptor descriptor = new FunctionDescriptor(symbol, paramTypes);
+    return FUNCTIONS.get(descriptor);
   }
 }
