@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SegmentCompiler extends TemplateBaseListener implements SegmentsEvalAware {
+  private static final String EMPTY = "";
+
   private final List<Segment> segments = new ArrayList<>(8);
 
   private final BufferedTokenStream tokenStream;
@@ -32,7 +34,7 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
 
   private void dealWithLeftOver() {
     int size = this.tokenStream.size();
-    if (this.lastAccess < size) {
+    if (this.lastAccess < size - 1) {
       String plainText = append(this.lastAccess, size - 1);
       this.segments.add(new PlainTextSegment(plainText));
       this.lastAccess = size;
@@ -45,7 +47,10 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
     Token stop = ctx.getStop();
 
     String plainText = append(this.lastAccess, start.getTokenIndex() - 1);
-    this.segments.add(new PlainTextSegment(plainText));
+
+    if (!plainText.equals(EMPTY)) {
+      this.segments.add(new PlainTextSegment(plainText));
+    }
 
     this.lastAccess = stop.getTokenIndex() + 1;
   }
@@ -83,15 +88,15 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
   private String append(int start, int stop) {
     List<Token> tokens = this.tokenStream.get(start, stop);
     if (null != tokens) {
-	    if (1 == tokens.size()) {
-		    return tokens.get(0).getText();
-	    }
-	    StringBuilder builder = new StringBuilder();
-	    for (Token token : tokens) {
-		    builder.append(token.getText());
-	    }
-	    return builder.toString();
+      if (1 == tokens.size()) {
+        return tokens.get(0).getText();
+      }
+      StringBuilder builder = new StringBuilder();
+      for (Token token : tokens) {
+        builder.append(token.getText());
+      }
+      return builder.toString();
     }
-    return "";
+    return EMPTY;
   }
 }
