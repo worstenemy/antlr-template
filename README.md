@@ -87,7 +87,7 @@ RuntimeManager.setArgs("foo", foo2);
 ```
 and you can access a member using dot:
 ```
-String template = "the length of foo's next a is ${${foo.getNext().a.length()}}";
+String template = "the length of foo's next a is ${foo.getNext().a.length()}";
 ```
 and the result is:
 ```
