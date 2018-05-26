@@ -1,15 +1,15 @@
 # antlr-template
 
-### parse arguments
+## parse arguments
 
 there are two arguments:
 ```
-  String a = "hello world";
-  String b = "this is test";
+String a = "hello world";
+String b = "this is test";
 ```
 and you got the template:
 ```
-  String template = "${a} to you, ${b}";
+String template = "${a} to you, ${b}";
 ```
 invoke parser:
 ```
@@ -20,4 +20,4 @@ and the result is:
 "hello world to you, this is test"
 ```
 
-###
+##
