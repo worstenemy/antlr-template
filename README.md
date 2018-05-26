@@ -60,3 +60,36 @@ invoke the parser and get the result:
 ```
 
 ## parse members
+
+define a class:
+```
+public class Foo {
+  private final String a;
+  private final Foo next;
+
+  public Foo(String a, Foo next) {
+    this.a = a;
+    this.next = next;
+  }
+
+  public String getA() {
+    return a;
+  }
+
+  public Foo getNext() {
+    return next;
+  }
+}
+
+Foo foo1 = new Foo("hello world", null);
+Foo foo2 = new Foo("this is test", foo1);
+RuntimeManager.setArgs("foo", foo2);
+```
+and you can access a member using dot:
+```
+String template = "the length of foo's next a is ${${foo.getNext().a.length()}}";
+```
+and the result is:
+```
+"the length of foo's next a is 11";
+```
