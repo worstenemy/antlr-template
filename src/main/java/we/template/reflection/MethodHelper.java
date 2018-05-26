@@ -59,12 +59,12 @@ public class MethodHelper {
   }
 
   private static Method fallThrough(MethodDescriptor descriptor) {
-    int paramLength = descriptor.getActualTypes().length;
+    int actualLength = descriptor.getActualTypes().length;
     Method[] methods = descriptor.getClazz().getMethods();
     for (Method method : methods) {
       if (method.getName().equals(descriptor.getMethodName())) {
         Class<?>[] expectTypes = method.getParameterTypes();
-        if (paramLength == expectTypes.length && paramTypesCompatible(expectTypes, descriptor.getActualTypes())) {
+        if (actualLength == expectTypes.length && paramTypesCompatible(expectTypes, descriptor.getActualTypes())) {
           cachedMethod(descriptor, method);
           return method;
         }
