@@ -52,11 +52,11 @@ and the result is:
 ```
 also, we support override methods:
 ```
-String template = "a add b is ${add(a, b)}";
+String template = "a add b length is ${add(a.substring(1, 2), b)}}";
 ```
 invoke the parser and get the result:
 ```
-"a add b is hello worldthis is test";
+"a add b length is ethis is test";
 ```
 
 ## parse members
