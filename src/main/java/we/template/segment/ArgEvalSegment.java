@@ -1,6 +1,6 @@
 package we.template.segment;
 
-import we.template.function.RuntimeManager;
+import we.template.function.RuntimeHelper;
 
 public class ArgEvalSegment extends Segment {
   public ArgEvalSegment(String arg) {
@@ -9,6 +9,6 @@ public class ArgEvalSegment extends Segment {
 
   @Override
   public Object eval() {
-    return RuntimeManager.arg(getText());
+    return RuntimeHelper.searchArg(getText());
   }
 }

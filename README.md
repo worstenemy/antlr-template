@@ -7,8 +7,8 @@ there are two arguments:
 String a = "hello world";
 String b = "this is test";
 
-RuntimeManager.setArgs("a", a);
-RuntimeManager.setArgs("b", b); // register the arguments you want to parse
+RuntimeHelper.defineArg("a", a);
+RuntimeHelper.defineArg("b", b); // register the arguments you want to parse
 ```
 and you got the template:
 ```
@@ -39,7 +39,7 @@ public class Functions {
 ```
 and register this class:
 ```
-RuntimeManager.setFunctions(Functions.class);
+RuntimeHelper.defineFunctions(Functions.class);
 ```
 invoke parser:
 ```
@@ -83,7 +83,7 @@ public class Foo {
 
 Foo foo1 = new Foo("hello world", null);
 Foo foo2 = new Foo("this is test", foo1);
-RuntimeManager.setArgs("foo", foo2);
+RuntimeHelper.defineArg("foo", foo2);
 ```
 and you can access a member using dot:
 ```

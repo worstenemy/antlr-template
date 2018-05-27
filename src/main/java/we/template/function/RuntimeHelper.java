@@ -8,18 +8,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class DefaultRuntimeContext extends RuntimeContext {
+public class RuntimeHelper {
   private static final ThreadLocal<Map<String, Object>> ARGS =
     ThreadLocal.withInitial(() -> new HashMap<String, Object>(32));
 
   private static final ConcurrentMap<FunctionDescriptor, Function> FUNCTIONS =
     new ConcurrentHashMap<>(32);
 
-  public void setArgs(String symbol, Object value) {
+  public static void defineArg(String symbol, Object value) {
     ARGS.get().putIfAbsent(symbol, value);
   }
 
-  public void setFunctions(Class<?> functions) {
+  public static void defineFunctions(Class<?> functions) {
     Method[] methods;
     Object instance = createInstance(functions);
     if (null != functions && null != instance && 0 != (methods = functions.getMethods()).length) {
@@ -33,7 +33,7 @@ public class DefaultRuntimeContext extends RuntimeContext {
     }
   }
 
-  private Object createInstance(Class<?> clazz) {
+  private static Object createInstance(Class<?> clazz) {
     try {
       return clazz.newInstance();
     } catch (Exception e) {
@@ -41,13 +41,11 @@ public class DefaultRuntimeContext extends RuntimeContext {
     }
   }
 
-  @Override
-  public Object arg(String symbol) {
+  public static Object searchArg(String symbol) {
     return ARGS.get().get(symbol);
   }
 
-  @Override
-  public Function function(String symbol, Class<?>[] paramTypes) {
+  public static Function searchFunction(String symbol, Class<?>[] paramTypes) {
     FunctionDescriptor descriptor = new FunctionDescriptor(symbol, paramTypes);
     return FUNCTIONS.get(descriptor);
   }

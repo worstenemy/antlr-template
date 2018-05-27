@@ -1,8 +1,8 @@
 package we.template.segment;
 
 import we.template.function.Function;
+import we.template.function.RuntimeHelper;
 import we.template.reflection.ReflectionHelper;
-import we.template.function.RuntimeManager;
 import we.template.antlr.TemplateBaseVisitor;
 import we.template.antlr.TemplateParser;
 
@@ -13,7 +13,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
   @Override
   public Object visitOSymbol(TemplateParser.OSymbolContext ctx) {
     String symbol = ctx.IDENTIFIER().getText();
-    return RuntimeManager.arg(symbol);
+    return RuntimeHelper.searchArg(symbol);
   }
 
   @Override
@@ -61,10 +61,10 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
       args[i] = visit(contexts.get(i));
     }
     Function function;
-    if (null != (function = RuntimeManager.function(symbol, ReflectionHelper.getReplacedTypes(args)))) {
+    if (null != (function = RuntimeHelper.searchFunction(symbol, ReflectionHelper.getReplacedTypes(args)))) {
       return function.call(args);
     }
-    throw new RuntimeException("setFunctions not found " + symbol);
+    throw new RuntimeException("defineFunctions not found " + symbol);
   }
 
   @Override
@@ -75,7 +75,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
   @Override
   public Object visitEId(TemplateParser.EIdContext ctx) {
     String symbol = ctx.IDENTIFIER().getText();
-    return RuntimeManager.arg(symbol);
+    return RuntimeHelper.searchArg(symbol);
   }
 
   @Override

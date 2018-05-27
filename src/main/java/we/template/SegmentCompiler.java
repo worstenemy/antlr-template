@@ -6,8 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import we.template.antlr.TemplateBaseListener;
 import we.template.antlr.TemplateParser;
-import we.template.function.Function;
-import we.template.function.RuntimeManager;
+import we.template.function.RuntimeHelper;
 import we.template.segment.ArgEvalSegment;
 import we.template.segment.FunctionEvalSegment;
 import we.template.segment.ObjectEvalSegment;
@@ -72,18 +71,6 @@ public class SegmentCompiler extends TemplateBaseListener implements EvalAware {
       builder.append(segment.eval());
     }
     return builder.toString();
-  }
-
-  @Override
-  public EvalAware setArgs(String symbol, Object value) {
-    RuntimeManager.setArgs(symbol, value);
-    return this;
-  }
-
-  @Override
-  public EvalAware setFunctions(Class<?> functions) {
-    RuntimeManager.setFunctions(functions);
-    return this;
   }
 
   private void compile(String template) {

@@ -5,10 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import we.template.ParseHelper;
 import we.template.SegmentCompiler;
-import we.template.function.RuntimeManager;
 import we.template.EvalAware;
+import we.template.function.RuntimeHelper;
 
 @RunWith(JUnit4.class)
 public class TemplateTest {
@@ -42,9 +41,9 @@ public class TemplateTest {
 
   @Before
   public void setUp() {
-    RuntimeManager.setArgs("a", "hello world");
-    RuntimeManager.setArgs("b", "this is test");
-    RuntimeManager.setFunctions(Function.class);
+    RuntimeHelper.defineArg("a", "hello world");
+    RuntimeHelper.defineArg("b", "this is test");
+    RuntimeHelper.defineFunctions(Function.class);
   }
 
   @Test
@@ -76,6 +75,13 @@ public class TemplateTest {
   }
 
   @Test
+  public void test_template_1() {
+    String template = "${concat(a.substring(0, 5), b)}";
+    String actual = new SegmentCompiler().eval(template);
+    Assert.assertEquals(actual, "hellothis is test");
+  }
+
+  @Test
   public void test_object() {
     String template = "${a.length()}";
     String actual = new SegmentCompiler(template).eval();
@@ -86,7 +92,7 @@ public class TemplateTest {
   public void test_object_access() {
     Foo foo1 = new Foo("hello world", null);
     Foo foo2 = new Foo("this is test", foo1);
-    RuntimeManager.setArgs("foo", foo2);
+    RuntimeHelper.defineArg("foo", foo2);
 
     String template = "${foo.next.a.length()}";
     String actual = new SegmentCompiler(template).eval();
@@ -114,12 +120,6 @@ public class TemplateTest {
     String template = "${a.size()}";
 
     EvalAware aware = new SegmentCompiler(template);
-
-    try {
-      aware.eval();
-    } catch (Exception ignored) {
-
-    }
 
     aware.eval();
   }
