@@ -15,7 +15,9 @@ public class FunctionEvalSegment extends Segment {
   @Override
   public Object eval() {
     Pair<ParseTree, BufferedTokenStream> pair =
-      ParseHelper.invoke("eval function", getText(), ParseHelper.TEMPLATE_PARSER, ParseHelper.TEMPLATE_LEXER,
+      ParseHelper.invoke("eval setFunctions", getText(),
+        ParseHelper.TEMPLATE_PARSER,
+        ParseHelper.TEMPLATE_LEXER,
         TemplateParser::tinyCall);
     EvalVisitor visitor = new EvalVisitor();
     return visitor.visit(pair.getFirst());

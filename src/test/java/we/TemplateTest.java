@@ -6,8 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import we.template.ParseHelper;
+import we.template.SegmentCompiler;
 import we.template.function.RuntimeManager;
-import we.template.SegmentsEvalAware;
+import we.template.EvalAware;
 
 @RunWith(JUnit4.class)
 public class TemplateTest {
@@ -49,36 +50,36 @@ public class TemplateTest {
   @Test
   public void test_arg_success() {
     String template = "${a}";
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-    Assert.assertEquals(aware.eval(), "hello world");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "hello world");
   }
 
   @Test
   public void test_function_add_success() {
     String template = "${add(1, 2)}";
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-    Assert.assertEquals(aware.eval(), "3");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "3");
   }
 
   @Test
   public void test_function_concat_success() {
     String template = "${concat(a, concat(a, b)).substring(0, 5)}";
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-    Assert.assertEquals(aware.eval(), "hello");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "hello");
   }
 
   @Test
   public void test_template() {
     String template = "select ${a} from ${b} where c >= '${add(1, 10000)}'";
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-    Assert.assertEquals(aware.eval(), "select hello world from this is test where c >= '10001'");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "select hello world from this is test where c >= '10001'");
   }
 
   @Test
   public void test_object() {
     String template = "${a.length()}";
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-    Assert.assertEquals(aware.eval(), "11");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "11");
   }
 
   @Test
@@ -88,34 +89,31 @@ public class TemplateTest {
     RuntimeManager.setArgs("foo", foo2);
 
     String template = "${foo.next.a.length()}";
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-
-    Assert.assertEquals(aware.eval(), "11");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "11");
   }
 
   @Test
   public void test_object_equals() {
     String template = "${a.equals(b)}";
 
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-
-    Assert.assertEquals(aware.eval(), "false");
+    String actual = new SegmentCompiler(template).eval();
+    Assert.assertEquals(actual, "false");
   }
 
   @Test
   public void test_object_subString() {
     String template = "${a.substring(0, 1)}";
 
-    SegmentsEvalAware aware = ParseHelper.compile(template);
-
-    Assert.assertEquals(aware.eval(), "h");
+    String actual = new SegmentCompiler().eval(template);
+    Assert.assertEquals(actual, "h");
   }
 
   @Test(expected = RuntimeException.class)
   public void test_missing_method() {
     String template = "${a.size()}";
 
-    SegmentsEvalAware aware = ParseHelper.compile(template);
+    EvalAware aware = new SegmentCompiler(template);
 
     try {
       aware.eval();

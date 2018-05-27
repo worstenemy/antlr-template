@@ -13,7 +13,6 @@ import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import we.template.antlr.TemplateLexer;
 import we.template.antlr.TemplateParser;
 
@@ -58,18 +57,6 @@ public class ParseHelper {
       throw new ParseCancellationException(name + " is too large (stack overflow)");
     }
     return Pair.valueOf(tree, tokenStream);
-  }
-
-  public static SegmentsEvalAware compile(String input) {
-    Pair<ParseTree, BufferedTokenStream> pair =
-      invoke("compile template", input,
-        TEMPLATE_PARSER,
-        TEMPLATE_LEXER,
-        TemplateParser::template);
-    SegmentCompiler compiler = new SegmentCompiler(pair.getSecond());
-    ParseTreeWalker walker = new ParseTreeWalker();
-    walker.walk(compiler, pair.getFirst());
-    return compiler;
   }
 
   public static final Function<TokenStream, TemplateParser> TEMPLATE_PARSER = TemplateParser::new;

@@ -51,7 +51,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
     return ReflectionHelper.invokeField(target, fieldName);
   }
 
-  /***************************************** function *****************************************/
+  /***************************************** functions *****************************************/
   @Override
   public Object visitTinyCall(TemplateParser.TinyCallContext ctx) {
     String symbol = ctx.IDENTIFIER().getText();
@@ -64,7 +64,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
     if (null != (function = RuntimeManager.function(symbol, ReflectionHelper.getReplacedTypes(args)))) {
       return function.call(args);
     }
-    throw new RuntimeException("function not found " + symbol);
+    throw new RuntimeException("setFunctions not found " + symbol);
   }
 
   @Override

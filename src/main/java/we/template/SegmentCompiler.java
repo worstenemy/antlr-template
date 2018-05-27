@@ -2,8 +2,12 @@ package we.template;
 
 import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import we.template.antlr.TemplateBaseListener;
 import we.template.antlr.TemplateParser;
+import we.template.function.Function;
+import we.template.function.RuntimeManager;
 import we.template.segment.ArgEvalSegment;
 import we.template.segment.FunctionEvalSegment;
 import we.template.segment.ObjectEvalSegment;
@@ -13,32 +17,84 @@ import we.template.segment.Segment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SegmentCompiler extends TemplateBaseListener implements SegmentsEvalAware {
-  private static final String EMPTY = "";
+import static we.template.ParseHelper.TEMPLATE_LEXER;
+import static we.template.ParseHelper.TEMPLATE_PARSER;
 
+public class SegmentCompiler extends TemplateBaseListener implements EvalAware {
   private final List<Segment> segments = new ArrayList<>(8);
 
-  private final BufferedTokenStream tokenStream;
+  private BufferedTokenStream tokenStream;
 
   private int lastAccess = 0;
 
-  public SegmentCompiler(BufferedTokenStream tokenStream) {
-    this.tokenStream = tokenStream;
+  public SegmentCompiler() {
+
   }
 
-  @Override
-  public List<Segment> getSegments() {
+  public SegmentCompiler(String template) {
+    compile(template);
+  }
+
+  private List<Segment> getSegments() {
     dealWithLeftOver();
     return this.segments;
   }
 
   private void dealWithLeftOver() {
     int size = this.tokenStream.size();
-    if (this.lastAccess < size - 1) {
-      String plainText = append(this.lastAccess, size - 1);
+    int lastAccess = this.lastAccess;
+    if (lastAccess < size - 1) {
+      String plainText = append(lastAccess, size - 1);
       this.segments.add(new PlainTextSegment(plainText));
       this.lastAccess = size;
     }
+  }
+
+  @Override
+  public String eval(String template) {
+    if (this.segments.isEmpty()) {
+      compile(template);
+    }
+    return eval();
+  }
+
+  @Override
+  public String eval() {
+    if (this.segments.isEmpty()) {
+      throw new RuntimeException("no template available");
+    }
+    List<Segment> segments = getSegments();
+    if (1 == segments.size()) {
+      return String.valueOf(segments.get(0).eval());
+    }
+    StringBuilder builder = new StringBuilder();
+    for (Segment segment : segments) {
+      builder.append(segment.eval());
+    }
+    return builder.toString();
+  }
+
+  @Override
+  public EvalAware setArgs(String symbol, Object value) {
+    RuntimeManager.setArgs(symbol, value);
+    return this;
+  }
+
+  @Override
+  public EvalAware setFunctions(Class<?> functions) {
+    RuntimeManager.setFunctions(functions);
+    return this;
+  }
+
+  private void compile(String template) {
+    Pair<ParseTree, BufferedTokenStream> pair =
+      ParseHelper.invoke("compile template", template,
+        TEMPLATE_PARSER,
+        TEMPLATE_LEXER,
+        TemplateParser::template);
+    this.tokenStream = pair.getSecond();
+    ParseTreeWalker walker = new ParseTreeWalker();
+    walker.walk(this, pair.getFirst());
   }
 
   @Override
@@ -46,9 +102,9 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
     Token start = ctx.getStart();
     Token stop = ctx.getStop();
 
-    String plainText = append(this.lastAccess, start.getTokenIndex() - 1);
-
-    if (!plainText.equals(EMPTY)) {
+    // not the first one
+    if (start.getTokenIndex() > 0) {
+      String plainText = append(this.lastAccess, start.getTokenIndex() - 1);
       this.segments.add(new PlainTextSegment(plainText));
     }
 
@@ -87,16 +143,13 @@ public class SegmentCompiler extends TemplateBaseListener implements SegmentsEva
 
   private String append(int start, int stop) {
     List<Token> tokens = this.tokenStream.get(start, stop);
-    if (null != tokens) {
-      if (1 == tokens.size()) {
-        return tokens.get(0).getText();
-      }
-      StringBuilder builder = new StringBuilder();
-      for (Token token : tokens) {
-        builder.append(token.getText());
-      }
-      return builder.toString();
+    if (1 == tokens.size()) {
+      return tokens.get(0).getText();
     }
-    return EMPTY;
+    StringBuilder builder = new StringBuilder();
+    for (Token token : tokens) {
+      builder.append(token.getText());
+    }
+    return builder.toString();
   }
 }

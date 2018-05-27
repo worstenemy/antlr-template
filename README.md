@@ -16,7 +16,7 @@ String template = "${a} to you, ${b}";
 ```
 invoke parser:
 ```
-String eval = ParseHelper.compile(template).eval();
+String eval = new SegmentCompiler(template).eval();
 ```
 and the result is:
 ```
@@ -44,7 +44,7 @@ RuntimeManager.setFunctions(Functions.class);
 invoke parser:
 ```
 String template = "1 add 3 is ${add(1, add(1, 2)}";
-String eval = ParseHelper.compile(template).eval();
+String eval = new SegmentCompiler(template).eval();
 ```
 and the result is:
 ```
