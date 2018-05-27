@@ -7,17 +7,21 @@ import we.template.ParseHelper;
 import we.template.antlr.TemplateParser;
 
 public class ObjectEvalSegment extends Segment {
+  private final ParseTree tree;
+
+  private final EvalVisitor visitor = new EvalVisitor();
+
   public ObjectEvalSegment(String object) {
     super(object);
-  }
-
-  @Override
-  public Object eval() {
     Pair<ParseTree, BufferedTokenStream> pair = ParseHelper.invoke("eval object", this.getText(),
       ParseHelper.TEMPLATE_PARSER,
       ParseHelper.TEMPLATE_LEXER,
       TemplateParser::tinyObject);
-    EvalVisitor visitor = new EvalVisitor();
-    return visitor.visit(pair.getFirst());
+    this.tree = pair.getFirst();
+  }
+
+  @Override
+  public Object eval() {
+    return this.visitor.visit(this.tree);
   }
 }

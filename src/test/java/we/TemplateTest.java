@@ -82,6 +82,16 @@ public class TemplateTest {
   }
 
   @Test
+  public void test_template_2() {
+    String template = "select ${a} from ${b} where c >= '${add(1, 10000)}'";
+    EvalAware aware = new SegmentCompiler(template);
+
+    for (int i = 0; i < 100; ++i) {
+      Assert.assertEquals(aware.eval(), "select hello world from this is test where c >= '10001'");
+    }
+  }
+
+  @Test
   public void test_object() {
     String template = "${a.length()}";
     String actual = new SegmentCompiler(template).eval();
