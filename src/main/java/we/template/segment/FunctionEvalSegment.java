@@ -15,7 +15,7 @@ public class FunctionEvalSegment extends Segment {
   public FunctionEvalSegment(String function) {
     super(function);
     Pair<ParseTree, BufferedTokenStream> pair =
-      ParseHelper.invoke("eval defineFunctions", getText(),
+      ParseHelper.invoke("eval functions", getText(),
         ParseHelper.TEMPLATE_PARSER,
         ParseHelper.TEMPLATE_LEXER,
         TemplateParser::tinyCall);
