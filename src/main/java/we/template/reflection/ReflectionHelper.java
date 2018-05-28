@@ -57,14 +57,14 @@ public class ReflectionHelper {
 		return types;
 	}
 
-	public static Class<?>[] getReplacedTypes(Object... args) {
+	public static Class<?>[] getParamTypes(Object... args) {
 		if (null == args) {
 			return null;
 		}
 		Class<?>[] paramTypes = new Class[args.length];
 		for (int i = 0; i < args.length; ++i) {
 			Class<?> type = args[i].getClass();
-			paramTypes[i] = replaceOrDefault(type);
+			paramTypes[i] = type;
 		}
 		return paramTypes;
 	}
@@ -92,7 +92,7 @@ public class ReflectionHelper {
 			throw new RuntimeException("invoke forbidden method: " + methodName);
 		}
 		Class<?> clazz = target.getClass();
-		Class<?>[] paramTypes = getReplacedTypes(args);
+		Class<?>[] paramTypes = getParamTypes(args);
 		Method method = MethodHelper.searchMethod(clazz, methodName, paramTypes);
 
 		boolean accessible = method.isAccessible();

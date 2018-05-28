@@ -61,7 +61,7 @@ public class EvalVisitor extends TemplateBaseVisitor<Object> {
       args[i] = visit(contexts.get(i));
     }
     Function function;
-    if (null != (function = RuntimeHelper.searchFunction(symbol, ReflectionHelper.getReplacedTypes(args)))) {
+    if (null != (function = RuntimeHelper.searchFunction(symbol, ReflectionHelper.getParamTypes(args)))) {
       return function.call(args);
     }
     throw new RuntimeException("defineFunctions not found " + symbol);
