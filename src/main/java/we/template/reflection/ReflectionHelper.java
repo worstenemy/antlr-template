@@ -61,7 +61,7 @@ public class ReflectionHelper {
 		if (null == args) {
 			return null;
 		}
-		Class<?>[] paramTypes = new Class[args.length];
+		Class<?>[] paramTypes = new Class<?>[args.length];
 		for (int i = 0; i < args.length; ++i) {
 			Class<?> type = args[i].getClass();
 			paramTypes[i] = type;
