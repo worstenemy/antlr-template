@@ -7,8 +7,8 @@ there are two arguments:
 String a = "hello world";
 String b = "this is test";
 
-RuntimeHelper.defineArg("a", a);
-RuntimeHelper.defineArg("b", b); // register the arguments you want to parse
+DefaultEvaluationContext.registerGlobalArg("a", "hello world");
+DefaultEvaluationContext.registerGlobalArg("b", "this is test"); // register the arguments you want to parse
 ```
 and you got the template:
 ```
@@ -16,7 +16,7 @@ String template = "${a} to you, ${b}";
 ```
 invoke parser:
 ```
-String eval = new SegmentCompiler(template).eval();
+String eval = TemplateEvaluator.create().evaluate(template);
 ```
 and the result is:
 ```
@@ -39,12 +39,12 @@ public class Functions {
 ```
 and register this class:
 ```
-RuntimeHelper.defineFunctions(Functions.class);
+DefaultEvaluationContext.registerGlobalMethod(Function.class);
 ```
 invoke parser:
 ```
 String template = "1 add 3 is ${add(1, add(1, 2)}";
-String eval = new SegmentCompiler(template).eval();
+String eval = TemplateEvaluator.create().evaluate(template);
 ```
 and the result is:
 ```
@@ -83,7 +83,7 @@ public class Foo {
 
 Foo foo1 = new Foo("hello world", null);
 Foo foo2 = new Foo("this is test", foo1);
-RuntimeHelper.defineArg("foo", foo2);
+DefaultEvaluationContext.registerGlobalArg("foo", foo2);
 ```
 and you can access a member using dot:
 ```
