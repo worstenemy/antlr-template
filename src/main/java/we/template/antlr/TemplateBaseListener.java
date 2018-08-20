@@ -1,4 +1,4 @@
-// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
+// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.7
 package we.template.antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -28,253 +28,301 @@ public class TemplateBaseListener implements TemplateListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSBraced(TemplateParser.SBracedContext ctx) { }
+	@Override public void enterBracedExpression(TemplateParser.BracedExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSBraced(TemplateParser.SBracedContext ctx) { }
+	@Override public void exitBracedExpression(TemplateParser.BracedExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSText(TemplateParser.STextContext ctx) { }
+	@Override public void enterPlainText(TemplateParser.PlainTextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSText(TemplateParser.STextContext ctx) { }
+	@Override public void exitPlainText(TemplateParser.PlainTextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTSymbol(TemplateParser.TSymbolContext ctx) { }
+	@Override public void enterTest(TemplateParser.TestContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTSymbol(TemplateParser.TSymbolContext ctx) { }
+	@Override public void exitTest(TemplateParser.TestContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTPlain(TemplateParser.TPlainContext ctx) { }
+	@Override public void enterDsl_arg(TemplateParser.Dsl_argContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTPlain(TemplateParser.TPlainContext ctx) { }
+	@Override public void exitDsl_arg(TemplateParser.Dsl_argContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSymbol(TemplateParser.SymbolContext ctx) { }
+	@Override public void enterDsl_call(TemplateParser.Dsl_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSymbol(TemplateParser.SymbolContext ctx) { }
+	@Override public void exitDsl_call(TemplateParser.Dsl_callContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPlain(TemplateParser.PlainContext ctx) { }
+	@Override public void enterDsl_access(TemplateParser.Dsl_accessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPlain(TemplateParser.PlainContext ctx) { }
+	@Override public void exitDsl_access(TemplateParser.Dsl_accessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBraced(TemplateParser.BracedContext ctx) { }
+	@Override public void enterDsl_notation(TemplateParser.Dsl_notationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBraced(TemplateParser.BracedContext ctx) { }
+	@Override public void exitDsl_notation(TemplateParser.Dsl_notationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSId(TemplateParser.SIdContext ctx) { }
+	@Override public void enterDsl_methodInvoke(TemplateParser.Dsl_methodInvokeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSId(TemplateParser.SIdContext ctx) { }
+	@Override public void exitDsl_methodInvoke(TemplateParser.Dsl_methodInvokeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSCall(TemplateParser.SCallContext ctx) { }
+	@Override public void enterDsl_methodName(TemplateParser.Dsl_methodNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSCall(TemplateParser.SCallContext ctx) { }
+	@Override public void exitDsl_methodName(TemplateParser.Dsl_methodNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSObject(TemplateParser.SObjectContext ctx) { }
+	@Override public void enterDsl_accessObjectField(TemplateParser.Dsl_accessObjectFieldContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSObject(TemplateParser.SObjectContext ctx) { }
+	@Override public void exitDsl_accessObjectField(TemplateParser.Dsl_accessObjectFieldContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOCall(TemplateParser.OCallContext ctx) { }
+	@Override public void enterDsl_accessParam(TemplateParser.Dsl_accessParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOCall(TemplateParser.OCallContext ctx) { }
+	@Override public void exitDsl_accessParam(TemplateParser.Dsl_accessParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOAccess(TemplateParser.OAccessContext ctx) { }
+	@Override public void enterDsl_accessMethod(TemplateParser.Dsl_accessMethodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOAccess(TemplateParser.OAccessContext ctx) { }
+	@Override public void exitDsl_accessMethod(TemplateParser.Dsl_accessMethodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOSymbol(TemplateParser.OSymbolContext ctx) { }
+	@Override public void enterDsl_accessObjectMethod(TemplateParser.Dsl_accessObjectMethodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOSymbol(TemplateParser.OSymbolContext ctx) { }
+	@Override public void exitDsl_accessObjectMethod(TemplateParser.Dsl_accessObjectMethodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterONonArgCall(TemplateParser.ONonArgCallContext ctx) { }
+	@Override public void enterDsl_field(TemplateParser.Dsl_fieldContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitONonArgCall(TemplateParser.ONonArgCallContext ctx) { }
+	@Override public void exitDsl_field(TemplateParser.Dsl_fieldContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOArgCall(TemplateParser.OArgCallContext ctx) { }
+	@Override public void enterDsl_expressions(TemplateParser.Dsl_expressionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOArgCall(TemplateParser.OArgCallContext ctx) { }
+	@Override public void exitDsl_expressions(TemplateParser.Dsl_expressionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTinyCall(TemplateParser.TinyCallContext ctx) { }
+	@Override public void enterDsl_paramExpression(TemplateParser.Dsl_paramExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTinyCall(TemplateParser.TinyCallContext ctx) { }
+	@Override public void exitDsl_paramExpression(TemplateParser.Dsl_paramExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEId(TemplateParser.EIdContext ctx) { }
+	@Override public void enterDsl_literalExpression(TemplateParser.Dsl_literalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEId(TemplateParser.EIdContext ctx) { }
+	@Override public void exitDsl_literalExpression(TemplateParser.Dsl_literalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEInt(TemplateParser.EIntContext ctx) { }
+	@Override public void enterDsl_objectExpression(TemplateParser.Dsl_objectExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEInt(TemplateParser.EIntContext ctx) { }
+	@Override public void exitDsl_objectExpression(TemplateParser.Dsl_objectExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEStr(TemplateParser.EStrContext ctx) { }
+	@Override public void enterDsl_methodInvokeExpression(TemplateParser.Dsl_methodInvokeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEStr(TemplateParser.EStrContext ctx) { }
+	@Override public void exitDsl_methodInvokeExpression(TemplateParser.Dsl_methodInvokeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEObject(TemplateParser.EObjectContext ctx) { }
+	@Override public void enterDsl_numberLiteral(TemplateParser.Dsl_numberLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEObject(TemplateParser.EObjectContext ctx) { }
+	@Override public void exitDsl_numberLiteral(TemplateParser.Dsl_numberLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterECall(TemplateParser.ECallContext ctx) { }
+	@Override public void enterDsl_stringLiteral(TemplateParser.Dsl_stringLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitECall(TemplateParser.ECallContext ctx) { }
+	@Override public void exitDsl_stringLiteral(TemplateParser.Dsl_stringLiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDsl_param(TemplateParser.Dsl_paramContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDsl_param(TemplateParser.Dsl_paramContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDsl_number(TemplateParser.Dsl_numberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDsl_number(TemplateParser.Dsl_numberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDsl_typedString(TemplateParser.Dsl_typedStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDsl_typedString(TemplateParser.Dsl_typedStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDsl_specialString(TemplateParser.Dsl_specialStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDsl_specialString(TemplateParser.Dsl_specialStringContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

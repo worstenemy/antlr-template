@@ -1,4 +1,4 @@
-// Generated from /Users/pxr/Desktop/antlr-template/src/main/java/we/template/Template.g4 by ANTLR 4.6
+// Generated from C:/Users/Lenovo/Desktop/antlr-template/src/main/java/we/template\Template.g4 by ANTLR 4.7
 package we.template.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -18,247 +18,285 @@ public interface TemplateListener extends ParseTreeListener {
 	 */
 	void exitTemplate(TemplateParser.TemplateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sBraced}
+	 * Enter a parse tree produced by the {@code bracedExpression}
 	 * labeled alternative in {@link TemplateParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterSBraced(TemplateParser.SBracedContext ctx);
+	void enterBracedExpression(TemplateParser.BracedExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code sBraced}
+	 * Exit a parse tree produced by the {@code bracedExpression}
 	 * labeled alternative in {@link TemplateParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitSBraced(TemplateParser.SBracedContext ctx);
+	void exitBracedExpression(TemplateParser.BracedExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sText}
+	 * Enter a parse tree produced by the {@code plainText}
 	 * labeled alternative in {@link TemplateParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterSText(TemplateParser.STextContext ctx);
+	void enterPlainText(TemplateParser.PlainTextContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code sText}
+	 * Exit a parse tree produced by the {@code plainText}
 	 * labeled alternative in {@link TemplateParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitSText(TemplateParser.STextContext ctx);
+	void exitPlainText(TemplateParser.PlainTextContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code tSymbol}
-	 * labeled alternative in {@link TemplateParser#text}.
+	 * Enter a parse tree produced by {@link TemplateParser#test}.
 	 * @param ctx the parse tree
 	 */
-	void enterTSymbol(TemplateParser.TSymbolContext ctx);
+	void enterTest(TemplateParser.TestContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code tSymbol}
-	 * labeled alternative in {@link TemplateParser#text}.
+	 * Exit a parse tree produced by {@link TemplateParser#test}.
 	 * @param ctx the parse tree
 	 */
-	void exitTSymbol(TemplateParser.TSymbolContext ctx);
+	void exitTest(TemplateParser.TestContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code tPlain}
-	 * labeled alternative in {@link TemplateParser#text}.
+	 * Enter a parse tree produced by the {@code dsl_arg}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void enterTPlain(TemplateParser.TPlainContext ctx);
+	void enterDsl_arg(TemplateParser.Dsl_argContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code tPlain}
-	 * labeled alternative in {@link TemplateParser#text}.
+	 * Exit a parse tree produced by the {@code dsl_arg}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void exitTPlain(TemplateParser.TPlainContext ctx);
+	void exitDsl_arg(TemplateParser.Dsl_argContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#symbol}.
+	 * Enter a parse tree produced by the {@code dsl_call}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void enterSymbol(TemplateParser.SymbolContext ctx);
+	void enterDsl_call(TemplateParser.Dsl_callContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#symbol}.
+	 * Exit a parse tree produced by the {@code dsl_call}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void exitSymbol(TemplateParser.SymbolContext ctx);
+	void exitDsl_call(TemplateParser.Dsl_callContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#plain}.
+	 * Enter a parse tree produced by the {@code dsl_access}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void enterPlain(TemplateParser.PlainContext ctx);
+	void enterDsl_access(TemplateParser.Dsl_accessContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#plain}.
+	 * Exit a parse tree produced by the {@code dsl_access}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void exitPlain(TemplateParser.PlainContext ctx);
+	void exitDsl_access(TemplateParser.Dsl_accessContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#braced}.
+	 * Enter a parse tree produced by the {@code dsl_notation}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void enterBraced(TemplateParser.BracedContext ctx);
+	void enterDsl_notation(TemplateParser.Dsl_notationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#braced}.
+	 * Exit a parse tree produced by the {@code dsl_notation}
+	 * labeled alternative in {@link TemplateParser#dsl_braced}.
 	 * @param ctx the parse tree
 	 */
-	void exitBraced(TemplateParser.BracedContext ctx);
+	void exitDsl_notation(TemplateParser.Dsl_notationContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sId}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_methodInvoke}.
 	 * @param ctx the parse tree
 	 */
-	void enterSId(TemplateParser.SIdContext ctx);
+	void enterDsl_methodInvoke(TemplateParser.Dsl_methodInvokeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code sId}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_methodInvoke}.
 	 * @param ctx the parse tree
 	 */
-	void exitSId(TemplateParser.SIdContext ctx);
+	void exitDsl_methodInvoke(TemplateParser.Dsl_methodInvokeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_methodName}.
 	 * @param ctx the parse tree
 	 */
-	void enterSCall(TemplateParser.SCallContext ctx);
+	void enterDsl_methodName(TemplateParser.Dsl_methodNameContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code sCall}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_methodName}.
 	 * @param ctx the parse tree
 	 */
-	void exitSCall(TemplateParser.SCallContext ctx);
+	void exitDsl_methodName(TemplateParser.Dsl_methodNameContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code sObject}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Enter a parse tree produced by the {@code dsl_accessObjectField}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void enterSObject(TemplateParser.SObjectContext ctx);
+	void enterDsl_accessObjectField(TemplateParser.Dsl_accessObjectFieldContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code sObject}
-	 * labeled alternative in {@link TemplateParser#tinyStmt}.
+	 * Exit a parse tree produced by the {@code dsl_accessObjectField}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void exitSObject(TemplateParser.SObjectContext ctx);
+	void exitDsl_accessObjectField(TemplateParser.Dsl_accessObjectFieldContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code oCall}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Enter a parse tree produced by the {@code dsl_accessParam}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void enterOCall(TemplateParser.OCallContext ctx);
+	void enterDsl_accessParam(TemplateParser.Dsl_accessParamContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code oCall}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Exit a parse tree produced by the {@code dsl_accessParam}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void exitOCall(TemplateParser.OCallContext ctx);
+	void exitDsl_accessParam(TemplateParser.Dsl_accessParamContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code oAccess}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Enter a parse tree produced by the {@code dsl_accessMethod}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void enterOAccess(TemplateParser.OAccessContext ctx);
+	void enterDsl_accessMethod(TemplateParser.Dsl_accessMethodContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code oAccess}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Exit a parse tree produced by the {@code dsl_accessMethod}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void exitOAccess(TemplateParser.OAccessContext ctx);
+	void exitDsl_accessMethod(TemplateParser.Dsl_accessMethodContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code oSymbol}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Enter a parse tree produced by the {@code dsl_accessObjectMethod}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void enterOSymbol(TemplateParser.OSymbolContext ctx);
+	void enterDsl_accessObjectMethod(TemplateParser.Dsl_accessObjectMethodContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code oSymbol}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Exit a parse tree produced by the {@code dsl_accessObjectMethod}
+	 * labeled alternative in {@link TemplateParser#dsl_objectAccess}.
 	 * @param ctx the parse tree
 	 */
-	void exitOSymbol(TemplateParser.OSymbolContext ctx);
+	void exitDsl_accessObjectMethod(TemplateParser.Dsl_accessObjectMethodContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code oNonArgCall}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_field}.
 	 * @param ctx the parse tree
 	 */
-	void enterONonArgCall(TemplateParser.ONonArgCallContext ctx);
+	void enterDsl_field(TemplateParser.Dsl_fieldContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code oNonArgCall}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_field}.
 	 * @param ctx the parse tree
 	 */
-	void exitONonArgCall(TemplateParser.ONonArgCallContext ctx);
+	void exitDsl_field(TemplateParser.Dsl_fieldContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code oArgCall}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_expressions}.
 	 * @param ctx the parse tree
 	 */
-	void enterOArgCall(TemplateParser.OArgCallContext ctx);
+	void enterDsl_expressions(TemplateParser.Dsl_expressionsContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code oArgCall}
-	 * labeled alternative in {@link TemplateParser#tinyObject}.
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_expressions}.
 	 * @param ctx the parse tree
 	 */
-	void exitOArgCall(TemplateParser.OArgCallContext ctx);
+	void exitDsl_expressions(TemplateParser.Dsl_expressionsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TemplateParser#tinyCall}.
+	 * Enter a parse tree produced by the {@code dsl_paramExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterTinyCall(TemplateParser.TinyCallContext ctx);
+	void enterDsl_paramExpression(TemplateParser.Dsl_paramExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TemplateParser#tinyCall}.
+	 * Exit a parse tree produced by the {@code dsl_paramExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitTinyCall(TemplateParser.TinyCallContext ctx);
+	void exitDsl_paramExpression(TemplateParser.Dsl_paramExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code eId}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Enter a parse tree produced by the {@code dsl_literalExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterEId(TemplateParser.EIdContext ctx);
+	void enterDsl_literalExpression(TemplateParser.Dsl_literalExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code eId}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Exit a parse tree produced by the {@code dsl_literalExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitEId(TemplateParser.EIdContext ctx);
+	void exitDsl_literalExpression(TemplateParser.Dsl_literalExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code eInt}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Enter a parse tree produced by the {@code dsl_objectExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterEInt(TemplateParser.EIntContext ctx);
+	void enterDsl_objectExpression(TemplateParser.Dsl_objectExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code eInt}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Exit a parse tree produced by the {@code dsl_objectExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitEInt(TemplateParser.EIntContext ctx);
+	void exitDsl_objectExpression(TemplateParser.Dsl_objectExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code eStr}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Enter a parse tree produced by the {@code dsl_methodInvokeExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterEStr(TemplateParser.EStrContext ctx);
+	void enterDsl_methodInvokeExpression(TemplateParser.Dsl_methodInvokeExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code eStr}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Exit a parse tree produced by the {@code dsl_methodInvokeExpression}
+	 * labeled alternative in {@link TemplateParser#dsl_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitEStr(TemplateParser.EStrContext ctx);
+	void exitDsl_methodInvokeExpression(TemplateParser.Dsl_methodInvokeExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code eObject}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Enter a parse tree produced by the {@code dsl_numberLiteral}
+	 * labeled alternative in {@link TemplateParser#dsl_literal}.
 	 * @param ctx the parse tree
 	 */
-	void enterEObject(TemplateParser.EObjectContext ctx);
+	void enterDsl_numberLiteral(TemplateParser.Dsl_numberLiteralContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code eObject}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Exit a parse tree produced by the {@code dsl_numberLiteral}
+	 * labeled alternative in {@link TemplateParser#dsl_literal}.
 	 * @param ctx the parse tree
 	 */
-	void exitEObject(TemplateParser.EObjectContext ctx);
+	void exitDsl_numberLiteral(TemplateParser.Dsl_numberLiteralContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code eCall}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Enter a parse tree produced by the {@code dsl_stringLiteral}
+	 * labeled alternative in {@link TemplateParser#dsl_literal}.
 	 * @param ctx the parse tree
 	 */
-	void enterECall(TemplateParser.ECallContext ctx);
+	void enterDsl_stringLiteral(TemplateParser.Dsl_stringLiteralContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code eCall}
-	 * labeled alternative in {@link TemplateParser#tinyExpr}.
+	 * Exit a parse tree produced by the {@code dsl_stringLiteral}
+	 * labeled alternative in {@link TemplateParser#dsl_literal}.
 	 * @param ctx the parse tree
 	 */
-	void exitECall(TemplateParser.ECallContext ctx);
+	void exitDsl_stringLiteral(TemplateParser.Dsl_stringLiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_param}.
+	 * @param ctx the parse tree
+	 */
+	void enterDsl_param(TemplateParser.Dsl_paramContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_param}.
+	 * @param ctx the parse tree
+	 */
+	void exitDsl_param(TemplateParser.Dsl_paramContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_number}.
+	 * @param ctx the parse tree
+	 */
+	void enterDsl_number(TemplateParser.Dsl_numberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_number}.
+	 * @param ctx the parse tree
+	 */
+	void exitDsl_number(TemplateParser.Dsl_numberContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_typedString}.
+	 * @param ctx the parse tree
+	 */
+	void enterDsl_typedString(TemplateParser.Dsl_typedStringContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_typedString}.
+	 * @param ctx the parse tree
+	 */
+	void exitDsl_typedString(TemplateParser.Dsl_typedStringContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TemplateParser#dsl_specialString}.
+	 * @param ctx the parse tree
+	 */
+	void enterDsl_specialString(TemplateParser.Dsl_specialStringContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TemplateParser#dsl_specialString}.
+	 * @param ctx the parse tree
+	 */
+	void exitDsl_specialString(TemplateParser.Dsl_specialStringContext ctx);
 }
