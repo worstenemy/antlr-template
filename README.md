@@ -39,7 +39,7 @@ public class Functions {
 ```
 and register this class:
 ```
-DefaultEvaluationContext.registerGlobalMethod(Function.class);
+DefaultEvaluationContext.registerGlobalMethod(Functions.class);
 ```
 invoke parser:
 ```
